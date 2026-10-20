@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuizBattle — Насколько хорошо ты меня знаешь?</title>
+<style>
+:root{--bg:#17134b;--yellow:#ffd447;--pink:#ff4f91;--blue:#3989ff;--green:#20c997}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:radial-gradient(circle at 10% 15%,#4d32a0 0,transparent 30%),radial-gradient(circle at 90% 80%,#76286e 0,transparent 28%),var(--bg);display:flex;justify-content:center;align-items:center;padding:16px}
+button,input{font:inherit}.app{width:100%;max-width:760px;margin:auto}.header-right{display:flex;align-items:center;gap:8px}.header-right select{max-width:125px;background:#29216e;color:#fff;border:2px solid #ffffff30;border-radius:12px;padding:9px 7px;font-weight:800}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.logo{font-size:clamp(20px,5vw,29px);font-weight:1000;letter-spacing:-1px}.logo span{color:var(--yellow)}.score{background:#ffffff1c;border:2px solid #ffffff30;padding:10px 15px;border-radius:16px;font-weight:900;white-space:nowrap}.panel{background:#ffffff0d;border:2px solid #ffffff20;border-radius:28px;padding:clamp(20px,5vw,36px);box-shadow:0 20px 60px #0003}.center{text-align:center}.emoji{font-size:clamp(52px,12vw,82px);line-height:1.2;margin-bottom:12px}h1{font-size:clamp(29px,7vw,48px);line-height:1.12;margin:10px 0 16px;letter-spacing:-1px}h2{font-size:clamp(23px,5vw,34px);line-height:1.2;margin:12px 0 24px}p{color:#e5e1ff;font-size:16px;line-height:1.6}.muted{color:#c8c1f4}.primary,.secondary{border:0;border-radius:17px;padding:15px 22px;min-height:54px;font-weight:900;cursor:pointer;transition:transform .15s,filter .15s}.primary{color:#24184d;background:var(--yellow);box-shadow:0 5px 0 #c99e20}.secondary{color:white;background:#ffffff18;border:2px solid #ffffff30}button:hover{filter:brightness(1.08)}button:active{transform:translateY(2px)}button:focus-visible,input:focus-visible{outline:3px solid white;outline-offset:4px}.level-picker{margin:20px 0 8px}.level-picker p{margin:8px 0}.level-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.level-button{border:2px solid #ffffff35;border-radius:14px;padding:13px 10px;background:#ffffff12;color:#fff;font-weight:900;cursor:pointer}.level-button.active{background:var(--yellow);color:#24184d;border-color:var(--yellow);box-shadow:0 4px 0 #c99e20}.level-button:disabled{opacity:.48;cursor:not-allowed;filter:grayscale(.6);box-shadow:none}.level-button:disabled:hover{filter:grayscale(.6)}.mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.mode-card{border-radius:20px;padding:18px 10px;font-weight:900;font-size:17px;min-height:110px;border:0;cursor:pointer;color:white}.mode-card span{display:block;font-size:30px;margin-bottom:7px}.mode-normal{background:var(--blue);box-shadow:0 5px 0 #2055a7}.mode-duel{background:var(--pink);box-shadow:0 5px 0 #a62b60}.name-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;text-align:left}.name-fields label{font-weight:800;font-size:14px}.name-fields input{display:block;width:100%;margin-top:7px;border:2px solid #ffffff35;background:#17134b;color:white;padding:13px;border-radius:12px;min-width:0}.name-fields input::placeholder{color:#b8b0e4}.email-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 20px;text-align:left}.email-fields label{font-weight:800;font-size:14px}.email-fields input{display:block;width:100%;margin-top:7px;border:2px solid #ffffff35;background:#17134b;color:white;padding:13px;border-radius:12px;min-width:0}.email-fields input::placeholder{color:#b8b0e4}.rematch-box{margin:18px 0;padding:18px;background:#ffffff12;border:2px solid #ffffff30;border-radius:18px}.rematch-box p{line-height:1.5}.rematch-status{font-weight:900;color:var(--yellow);margin:12px 0}.progress-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:14px;font-weight:800}.progress-track{height:10px;background:#ffffff20;border-radius:99px;overflow:hidden;margin-bottom:25px}.progress{height:100%;width:0;background:var(--yellow);border-radius:99px;transition:width .25s}.question{background:white;color:#261d59;border-radius:20px;padding:24px 18px;font-size:clamp(21px,5vw,30px);font-weight:950;text-align:center;line-height:1.3;margin-bottom:18px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{color:white;border:0;border-radius:17px;min-height:88px;padding:17px 12px;font-size:clamp(15px,3.5vw,19px);font-weight:900;text-align:left;display:flex;align-items:center;gap:11px;cursor:pointer;overflow-wrap:anywhere;box-shadow:0 5px 0 #0002}.answer .letter{display:grid;place-items:center;width:34px;height:34px;min-width:34px;border-radius:10px;background:#0002;font-weight:1000}.answer:nth-child(1){background:#e84b66}.answer:nth-child(2){background:#287be0}.answer:nth-child(3){background:#169e79}.answer:nth-child(4){background:#d68b16}.answer:disabled{cursor:default;opacity:.82}.answer.correct{outline:4px solid white;background:#10a96f;opacity:1}.answer.wrong{background:#b83d50;opacity:1}.feedback{margin-top:18px;border-radius:15px;padding:14px;background:#ffffff15;text-align:center;font-weight:800;line-height:1.5}.next-row{display:flex;justify-content:center;margin-top:18px}.hidden{display:none!important}.handoff{padding:20px 10px;background:#ffffff12;border:2px dashed #ffffff35;border-radius:20px;margin-top:10px}.result-score{font-size:clamp(48px,13vw,78px);font-weight:1000;color:var(--yellow);line-height:1.1;margin:18px 0}.winner{font-size:clamp(25px,6vw,40px);font-weight:1000;color:var(--yellow);margin:18px 0;overflow-wrap:anywhere}.scoreboard{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.player-result{background:#ffffff12;border:2px solid #ffffff25;border-radius:18px;padding:18px 10px;overflow-wrap:anywhere}.player-result strong{display:block;font-size:19px;margin-bottom:12px}.player-result .points{font-size:36px;font-weight:1000;color:var(--yellow)}.result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}.footer{text-align:center;color:#c8c1f4;font-size:12px;margin-top:18px}.hidden{display:none!important}
+@media(max-width:480px){.email-fields{grid-template-columns:1fr}.name-fields{grid-template-columns:1fr}}
+@media(max-width:480px){.header-right{gap:5px}.header-right select{max-width:95px;font-size:12px;padding:8px 4px}.score{padding:8px 9px;font-size:13px}body{padding:10px;align-items:flex-start}.app{margin:8px auto}.panel{padding:20px 14px;border-radius:22px}.answers{gap:9px}.answer{min-height:92px;padding:12px 9px;gap:7px}.answer .letter{width:29px;height:29px;min-width:29px}.name-fields{grid-template-columns:1fr}.mode-card{font-size:15px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="topbar"><div class="logo">⚡ Quiz<span>Battle</span></div><div class="header-right"><select id="languageSelect" aria-label="Language"><option value="ru">Русский</option><option value="en">English</option><option value="pt">Português</option></select><div class="score" id="headerScore">⭐ Счёт: 0</div></div></header>
+<section class="panel center" id="home"><div class="emoji">🧠🎮</div><h1>Насколько хорошо ты меня знаешь?</h1><p>Проверь, насколько хорошо ты знаешь Alex! Отвечай на вопросы, набирай очки и побеждай.</p><div class="level-picker">
+<p><strong>Выбери уровень:</strong></p>
+<div class="level-buttons">
+<button class="level-button active" id="level1Button">⭐ Уровень 1</button>
+<button class="level-button" id="level2Button">🚀 Уровень 2</button>
+</div>
+<p class="muted" id="levelDescription">5 вопросов о тебе</p>
+</div>
+<div class="mode-buttons"><button class="mode-card mode-normal" id="normalMode"><span>🙋</span>Один игрок</button><button class="mode-card mode-duel" id="duelMode"><span>⚔️</span>Дуэль вдвоём</button></div><p class="muted">За каждый правильный ответ — 1 очко.</p></section>
+<section class="panel center hidden" id="setup"><div class="emoji">⚔️</div><h2>Готовы к дуэли?</h2><p>Введите имена игроков. Вы будете отвечать по очереди на одни и те же вопросы.</p><div class="name-fields"><label>Игрок 1<input id="name1" maxlength="20" placeholder="Например, Маша"></label><label>Игрок 2<input id="name2" maxlength="20" placeholder="Например, Петя"></label></div><div class="email-fields"><label id="emailLabel1">Email игрока 1<input id="email1" type="email" autocomplete="email" placeholder="player1@example.com"></label><label id="emailLabel2">Email игрока 2<input id="email2" type="email" autocomplete="email" placeholder="player2@example.com"></label></div><p class="muted" id="emailNote">Email здесь только для заполнения — он не отправляется и не подключает игроков удалённо.</p><div class="result-actions"><button class="primary" id="startDuel">Начать дуэль! 🚀</button><button class="secondary" id="backHome">Назад</button></div></section>
+<section class="panel hidden" id="game"><div class="progress-row"><span id="questionCount">Вопрос 1 из 5</span><span id="turnLabel">Твой ход!</span></div><div class="progress-track"><div class="progress" id="progress"></div></div><div class="question" id="questionText"></div><div class="answers" id="answers"></div><div class="handoff hidden center" id="handoff"><div class="emoji">📱🔄</div><h2 id="handoffTitle">Передай телефон</h2><p id="handoffText">Не подглядывай в ответы другого игрока!</p><button class="primary" id="readyButton">Я готов(а)!</button></div><div class="feedback hidden" id="feedback" aria-live="polite"></div><div class="next-row hidden" id="nextRow"><button class="primary" id="nextButton">Дальше ➜</button></div></section>
+<section class="panel center hidden" id="result"><div class="emoji" id="resultEmoji">🏆</div><h1 id="resultTitle">Результат!</h1><div id="resultContent"></div><div class="result-actions"><button class="primary" id="playAgain">Играть снова 🔄</button><button class="secondary" id="goHome">На главную</button></div></section>
+<div class="footer">QuizBattle • Проверь дружбу! 💜</div>
+</main>
+<script>
+"use strict";
+const level1Questions=[
+{text:"👀 Какого цвета у меня глаза?",answers:["Зелёные","Синие","Карие","Серые"],correct:1},
+{text:"🌍 В какой стране я живу?",answers:["Испания","Франция","Португалия","Италия"],correct:2},
+{text:"🍼 В какой стране я родился?",answers:["Россия","Португалия","Германия","Украина"],correct:0},
+{text:"💇 Какого цвета у меня волосы?",answers:["Чёрные","Рыжие","Коричневые","Белые"],correct:3},
+{text:"🏠 Сколько комнат в моей квартире?",answers:["1","4","3","2"],correct:2}
+];
+const level2Questions=[
+{text:"🚗 Какая у меня машина?",answers:["BMW","MG","Toyota","Mercedes-Benz"],correct:1},
+{text:"🌆 В каком городе я живу?",answers:["Порту","Лиссабон","Коимбра","Брага"],correct:1},
+{text:"📍 В каком районе Лиссабона я живу?",answers:["Алфама","Белень","Алваладе","Байша"],correct:2},
+{text:"🏢 Сколько этажей в моём здании?",answers:["3 этажа","4 этажа","6 этажей","5 этажей"],correct:3}
+];
+const translatedQuestions = {
+en: {
+1: [
+{text:"👀 What color are my eyes?",answers:["Green","Blue","Brown","Grey"],correct:1},
+{text:"🌍 Which country do I live in?",answers:["Spain","France","Portugal","Italy"],correct:2},
+{text:"🍼 Which country was I born in?",answers:["Russia","Portugal","Germany","Ukraine"],correct:0},
+{text:"💇 What color is my hair?",answers:["Black","Red","Brown","White"],correct:3},
+{text:"🏠 How many rooms are in my apartment?",answers:["1","4","3","2"],correct:2}
+],
+2: [
+{text:"🚗 What car do I have?",answers:["BMW","MG","Toyota","Mercedes-Benz"],correct:1},
+{text:"🌆 Which city do I live in?",answers:["Porto","Lisbon","Coimbra","Braga"],correct:1},
+{text:"📍 Which Lisbon neighbourhood do I live in?",answers:["Alfama","Belém","Alvalade","Baixa"],correct:2},
+{text:"🏢 How many floors does my building have?",answers:["3 floors","4 floors","6 floors","5 floors"],correct:3}
+]
+},
+pt: {
+1: [
+{text:"👀 De que cor são os meus olhos?",answers:["Verdes","Azuis","Castanhos","Cinzentos"],correct:1},
+{text:"🌍 Em que país vivo?",answers:["Espanha","França","Portugal","Itália"],correct:2},
+{text:"🍼 Em que país nasci?",answers:["Rússia","Portugal","Alemanha","Ucrânia"],correct:0},
+{text:"💇 De que cor é o meu cabelo?",answers:["Preto","Ruivo","Castanho","Branco"],correct:3},
+{text:"🏠 Quantas divisões tem o meu apartamento?",answers:["1","4","3","2"],correct:2}
+],
+2: [
+{text:"🚗 Que carro tenho?",answers:["BMW","MG","Toyota","Mercedes-Benz"],correct:1},
+{text:"🌆 Em que cidade vivo?",answers:["Porto","Lisboa","Coimbra","Braga"],correct:1},
+{text:"📍 Em que bairro de Lisboa vivo?",answers:["Alfama","Belém","Alvalade","Baixa"],correct:2},
+{text:"🏢 Quantos andares tem o meu prédio?",answers:["3 andares","4 andares","6 andares","5 andares"],correct:3}
+]
+}
+};
+let language = "ru";
+let currentLevel=1;
+let questions=level1Questions;
+const translations = {
+ru: {
+score:"⭐ Счёт: ",title:"Насколько хорошо ты меня знаешь?",intro:"Проверь, насколько хорошо ты знаешь Alex! Отвечай на вопросы, набирай очки и побеждай.",
+chooseLevel:"Выбери уровень:",level1:"⭐ Уровень 1",level2:"🚀 Уровень 2",level2Locked:"🔒 Уровень 2",levelDesc:"5 вопросов о тебе",unlockDesc:"Сначала пройди уровень 1, чтобы открыть уровень 2",unlockedDesc:"Уровень 1 пройден! Теперь доступен уровень 2",level2Desc:"4 новых вопроса о твоей машине, городе и доме",onePlayer:"Один игрок",duel:"Дуэль вдвоём",pointRule:"За каждый правильный ответ — 1 очко.",
+email1Label:"Email игрока 1",email2Label:"Email игрока 2",emailNote:"Email здесь только для заполнения — он не отправляется и не подключает игроков удалённо.",rematchAsk:"Хочешь реванш?",rematchAccept:"Принять реванш",rematchRequested:"Запрос на реванш отправлен. Второй игрок должен принять его.",rematchDeclined:"Реванш отклонён.",rematchBoth:"Оба игрока могут сыграть ещё раз.",readyDuel:"Готовы к дуэли?",enterNames:"Введите имена игроков. Вы будете отвечать по очереди на одни и те же вопросы.",player1:"Игрок 1",player2:"Игрок 2",name1:"Например, Маша",name2:"Например, Петя",startDuel:"Начать дуэль! 🚀",back:"Назад",question:"Вопрос",yourTurn:"Твой ход!",turn:"Ход: ",handoffTitle:"Передай телефон",handoffText:"Не подглядывай в ответы другого игрока!",ready:"Я готов(а)!",saved:"Ответ сохранён!",pass2:"Передай телефон игроку 2. Его ответ будет засчитан независимо — предыдущий выбор скрыт.",start2:"Игрок 2, начать ➜",correct:"🎉 Правильно! +1 очко!",wrong:"😅 Не угадал! Правильный ответ: ",next:"Следующий вопрос ➜",result:"Узнать результат 🏆",changePlayer:"Смена игрока",passPhone:"Передай телефон",player1Turn:"Теперь ход игрока 1",pass1:"Передай телефон первому игроку. Не обсуждайте правильный ответ до того, как оба ответят.",start1:"Игрок 1, начать ➜",resultTitle:"Твой результат!",duelDone:"Дуэль окончена!",winner:"🏆 Победил(а) ",draw:"🤝 Ничья!",drawMsg:"Оба игрока на высоте! Сыграйте ещё раз, чтобы определить победителя.",duelMsg:"Отличная битва! Кто лучше знает Alex? Реванш? 😎",again:"Играть снова 🔄",home:"На главную",footer:"QuizBattle • Проверь дружбу! 💜",
+solo:[ "🤣 Кажется, нам нужно познакомиться заново! Попробуй ещё раз!","🙈 Пока знаешь меня не очень хорошо. Время узнать друг друга получше!","😂 Есть над чем поработать! Пора больше общаться!","😎 Хороший результат! Но у меня ещё остались секреты!","🔥 Очень круто! Ты знаешь меня почти идеально!","🌟 НЕВЕРОЯТНО! Ты знаешь меня на все 100%! Настоящий эксперт дружбы!" ]
+},
+en: {
+score:"⭐ Score: ",title:"How well do you know me?",intro:"Find out how well you know Alex! Answer the questions, earn points, and win.",
+chooseLevel:"Choose a level:",level1:"⭐ Level 1",level2:"🚀 Level 2",level2Locked:"🔒 Level 2",levelDesc:"5 questions about me",unlockDesc:"Complete Level 1 to unlock Level 2",unlockedDesc:"Level 1 completed! Level 2 is now unlocked",level2Desc:"4 new questions about my car, city, and building",onePlayer:"Single player",duel:"Two-player duel",pointRule:"Earn 1 point for every correct answer.",
+email1Label:"Player 1 email",email2Label:"Player 2 email",emailNote:"These email fields are for display only. They do not send emails or connect remote players.",rematchAsk:"Want a rematch?",rematchAccept:"Accept rematch",rematchRequested:"Rematch request sent. The other player must accept it.",rematchDeclined:"Rematch declined.",rematchBoth:"Both players can play again.",readyDuel:"Ready for a duel?",enterNames:"Enter player names. You will take turns answering the same questions.",player1:"Player 1",player2:"Player 2",name1:"For example, Alex",name2:"For example, Sam",startDuel:"Start duel! 🚀",back:"Back",question:"Question",yourTurn:"Your turn!",turn:"Turn: ",handoffTitle:"Pass the phone",handoffText:"Don't peek at the other player's answers!",ready:"I'm ready!",saved:"Answer saved!",pass2:"Pass the phone to Player 2. Their answer is scored separately—the first player's choice is hidden.",start2:"Player 2, start ➜",correct:"🎉 Correct! +1 point!",wrong:"😅 Not quite! Correct answer: ",next:"Next question ➜",result:"See results 🏆",changePlayer:"Switch player",passPhone:"Pass the phone",player1Turn:"Player 1's turn",pass1:"Pass the phone to Player 1. Don't discuss the correct answer until both have answered.",start1:"Player 1, start ➜",resultTitle:"Your result!",duelDone:"Duel finished!",winner:"🏆 Winner: ",draw:"🤝 It's a tie!",drawMsg:"Both players did great! Play again to decide the winner.",duelMsg:"Great battle! Who knows Alex better? Rematch? 😎",again:"Play again 🔄",home:"Home",footer:"QuizBattle • Test your friendship! 💜",
+solo:["🤣 Looks like we need to get to know each other again! Try once more!","🙈 You don't know me very well yet. Time to learn more about each other!","😂 There's room to improve! Time to hang out more!","😎 Nice score! But I still have some secrets!","🔥 Awesome! You know me almost perfectly!","🌟 INCREDIBLE! You know me 100%—a true friendship expert!"]
+},
+pt: {
+score:"⭐ Pontos: ",title:"Quão bem me conheces?",intro:"Descobre quão bem conheces o Alex! Responde às perguntas, ganha pontos e vence.",
+chooseLevel:"Escolhe um nível:",level1:"⭐ Nível 1",level2:"🚀 Nível 2",level2Locked:"🔒 Nível 2",levelDesc:"5 perguntas sobre mim",unlockDesc:"Conclui o Nível 1 para desbloquear o Nível 2",unlockedDesc:"Nível 1 concluído! O Nível 2 está desbloqueado",level2Desc:"4 novas perguntas sobre o meu carro, cidade e prédio",onePlayer:"Um jogador",duel:"Duelo a dois",pointRule:"Ganha 1 ponto por cada resposta correta.",
+readyDuel:"Prontos para o duelo?",enterNames:"Introduzam os nomes. Vão responder à vez às mesmas perguntas.",player1:"Jogador 1",player2:"Jogador 2",name1:"Por exemplo, Alex",name2:"Por exemplo, Sam",startDuel:"Começar duelo! 🚀",back:"Voltar",question:"Pergunta",yourTurn:"A tua vez!",turn:"Vez de: ",handoffTitle:"Passa o telemóvel",handoffText:"Não espreites as respostas do outro jogador!",ready:"Estou pronto(a)!",saved:"Resposta guardada!",pass2:"Passa o telemóvel ao Jogador 2. A resposta será contabilizada separadamente; a escolha do primeiro jogador fica escondida.",start2:"Jogador 2, começar ➜",correct:"🎉 Correto! +1 ponto!",wrong:"😅 Não foi desta! Resposta correta: ",next:"Próxima pergunta ➜",result:"Ver resultado 🏆",changePlayer:"Troca de jogador",passPhone:"Passa o telemóvel",player1Turn:"Agora é a vez do Jogador 1",pass1:"Passa o telemóvel ao Jogador 1. Não falem da resposta correta até ambos responderem.",start1:"Jogador 1, começar ➜",resultTitle:"O teu resultado!",duelDone:"Duelo terminado!",winner:"🏆 Venceu: ",draw:"🤝 Empate!",drawMsg:"Os dois jogaram muito bem! Joguem novamente para decidir o vencedor.",duelMsg:"Grande duelo! Quem conhece melhor o Alex? Desforra? 😎",again:"Jogar novamente 🔄",home:"Início",footer:"QuizBattle • Testa a amizade! 💜",
+solo:["🤣 Parece que precisamos de nos conhecer de novo! Tenta outra vez!","🙈 Ainda não me conheces muito bem. Está na hora de nos conhecermos melhor!","😂 Ainda podes melhorar! Está na hora de conviver mais!","😎 Bom resultado! Mas ainda tenho alguns segredos!","🔥 Excelente! Quase me conheces na perfeição!","🌟 INCRÍVEL! Conheces-me a 100%! Um verdadeiro especialista em amizade!"]
+}
+};
+const $=id=>document.getElementById(id),screens=["home","setup","game","result"],lettersByLang={ru:["А","Б","В","Г"],en:["A","B","C","D"],pt:["A","B","C","D"]};
+let letters=lettersByLang.ru;
+function tr(key){return translations[language][key]}
+function applyLanguage(){
+  document.documentElement.lang=language;
+  const t=translations[language];
+  $("languageSelect").value=language;
+  document.querySelector("#home h1").textContent=t.title;
+  document.querySelector("#home > p").textContent=t.intro;
+  document.querySelector("#level1Button").textContent=t.level1;
+  $("level2Button").textContent=level2Unlocked?t.level2:t.level2Locked;
+  document.querySelector(".level-picker strong").textContent=t.chooseLevel;
+  $("normalMode").lastChild.textContent=t.onePlayer;
+  $("duelMode").lastChild.textContent=t.duel;
+  $("setup").querySelector("h2").textContent=t.readyDuel;
+  $("setup").querySelector("p").textContent=t.enterNames;
+  $("setup").querySelectorAll("label")[0].childNodes[0].textContent=t.player1;
+  $("setup").querySelectorAll("label")[1].childNodes[0].textContent=t.player2;
+  $("name1").placeholder=t.name1;$("name2").placeholder=t.name2; $("emailLabel1").childNodes[0].textContent=t.email1Label; $("emailLabel2").childNodes[0].textContent=t.email2Label; $("emailNote").textContent=t.emailNote;
+  $("startDuel").textContent=t.startDuel;$("backHome").textContent=t.back;
+  $("readyButton").textContent=t.ready;$("nextButton").textContent=t.next;
+  $("playAgain").textContent=t.again;$("goHome").textContent=t.home;
+  document.querySelector(".footer").textContent=t.footer;
+  letters=lettersByLang[language];
+  questions = language==="ru" ? (currentLevel===1?level1Questions:level2Questions) : translatedQuestions[language][currentLevel];
+  updateHeader();updateLevelPicker();
+  if(!$("game").classList.contains("hidden") && questionIndex<questions.length)renderQuestion();
+}
+
+let mode="normal",questionIndex=0,currentPlayer=0,scores=[0,0],playerNames=["Игрок 1","Игрок 2"],answered=false;
+function showScreen(id){screens.forEach(s=>$(s).classList.toggle("hidden",s!==id))}
+function updateHeader(){$("headerScore").textContent=mode==="duel"?"⭐ "+scores[0]+" : "+scores[1]:tr("score")+scores[0]}
+function resetGame(){questionIndex=0;currentPlayer=0;scores=[0,0];answered=false;updateHeader()}
+let level2Unlocked = false;
+try { level2Unlocked = localStorage.getItem("quizBattleLevel2Unlocked") === "yes"; } catch (e) {}
+function updateLevelPicker(){
+  $("level2Button").disabled = !level2Unlocked;
+  $("level2Button").textContent = level2Unlocked ? tr("level2") : tr("level2Locked");
+  if (!level2Unlocked && currentLevel === 1) {
+    $("levelDescription").textContent = tr("unlockDesc");
+  } else if (currentLevel === 1) {
+    $("levelDescription").textContent = tr("unlockedDesc");
+  } else {
+    $("levelDescription").textContent = tr("level2Desc");
+  }
+}
+$("level1Button").addEventListener("click",()=>{
+  currentLevel=1;questions=language==="ru"?level1Questions:translatedQuestions[language][1];
+  $("level1Button").classList.add("active");$("level2Button").classList.remove("active");
+  updateLevelPicker();
+});
+$("level2Button").addEventListener("click",()=>{
+  if(!level2Unlocked)return;
+  currentLevel=2;questions=language==="ru"?level2Questions:translatedQuestions[language][2];
+  $("level2Button").classList.add("active");$("level1Button").classList.remove("active");
+  updateLevelPicker();
+});
+updateLevelPicker();
+$("languageSelect").addEventListener("change",e=>{language=e.target.value;applyLanguage()});
+applyLanguage();
+$("normalMode").addEventListener("click",()=>{mode="normal";resetGame();startGame()});
+$("duelMode").addEventListener("click",()=>{mode="duel";$("name1").value="";$("name2").value="";$("email1").value="";$("email2").value="";showScreen("setup")});
+$("backHome").addEventListener("click",()=>showScreen("home"));
+$("startDuel").addEventListener("click",()=>{playerNames=[$("name1").value.trim()||"Игрок 1",$("name2").value.trim()||"Игрок 2"];if(playerNames[0].toLowerCase()===playerNames[1].toLowerCase()){playerNames[0]+=" (1)";playerNames[1]+=" (2)"}mode="duel";resetGame();startGame()});
+function startGame(){showScreen("game");renderQuestion()}
+let handoffPurpose = "";
+function renderQuestion(){
+  answered=false;
+  const q=questions[questionIndex];
+  $("questionCount").textContent=tr("question")+" "+(questionIndex+1)+" / "+questions.length;
+  $("turnLabel").textContent=mode==="duel"?tr("turn")+playerNames[currentPlayer]:tr("yourTurn");
+  $("progress").style.width=(questionIndex/questions.length*100)+"%";
+  $("questionText").textContent=q.text;
+  $("questionText").classList.remove("hidden");
+  $("answers").classList.remove("hidden");
+  $("answers").innerHTML="";
+  $("handoff").classList.add("hidden");
+  $("feedback").classList.add("hidden");
+  $("nextRow").classList.add("hidden");
+  q.answers.forEach((answer,index)=>{
+    const b=document.createElement("button");b.className="answer";
+    const l=document.createElement("span");l.className="letter";l.textContent=letters[index];
+    const t=document.createElement("span");t.textContent=answer;b.append(l,t);
+    b.addEventListener("click",()=>chooseAnswer(index));$("answers").appendChild(b);
+  });
+  updateHeader();
+}
+function chooseAnswer(index){
+  if(answered)return;
+  answered=true;
+  const q=questions[questionIndex],buttons=Array.from($("answers").children),ok=index===q.correct;
+  if(ok)scores[currentPlayer]++;
+  updateHeader();
+  // Скрываем первый ответ целиком: второй игрок не увидит ни выбор, ни подсказку.
+  if(mode==="duel" && currentPlayer===0){
+    $("questionText").classList.add("hidden");
+    $("answers").classList.add("hidden");
+    $("feedback").classList.add("hidden");
+    $("nextRow").classList.add("hidden");
+    handoffPurpose="player2";
+    $("handoffTitle").textContent=tr("saved");
+    $("handoffText").textContent=tr("pass2");
+    $("readyButton").textContent=tr("start2");
+    $("handoff").classList.remove("hidden");
+    return;
+  }
+  buttons.forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add("correct");if(i===index&&!ok)b.classList.add("wrong")});
+  let msg=ok?tr("correct"):tr("wrong")+letters[q.correct]+") "+q.answers[q.correct];
+  if(mode==="duel")msg=playerNames[currentPlayer]+": "+msg;
+  $("feedback").textContent=msg;$("feedback").classList.remove("hidden");
+  $("nextButton").textContent=questionIndex===questions.length-1?tr("result"):tr("next");
+  $("nextRow").classList.remove("hidden");
+}
+$("readyButton").addEventListener("click",()=>{
+  if(handoffPurpose==="player2"){
+    currentPlayer=1;handoffPurpose="";renderQuestion();
+  }else if(handoffPurpose==="player1"){
+    currentPlayer=0;handoffPurpose="";renderQuestion();
+  }
+});
+$("nextButton").addEventListener("click",()=>{
+  if(!answered)return;
+  if(questionIndex===questions.length-1){showResults();return;}
+  questionIndex++;
+  if(mode==="duel"){
+    // Перед следующим вопросом убираем предыдущий ответ и просим передать телефон.
+    $("questionText").classList.add("hidden");$("answers").classList.add("hidden");
+    $("feedback").classList.add("hidden");$("nextRow").classList.add("hidden");
+    handoffPurpose="player1";
+    $("questionCount").textContent=tr("changePlayer");
+    $("turnLabel").textContent=tr("passPhone");
+    $("handoffTitle").textContent=tr("player1Turn");
+    $("handoffText").textContent=tr("pass1");
+    $("readyButton").textContent=tr("start1");
+    $("handoff").classList.remove("hidden");
+  }else{renderQuestion();}
+});
+function soloMessage(s){return translations[language].solo[Math.max(0,Math.min(5,s))]}
+function showResults(){
+  if(currentLevel===1){
+    level2Unlocked=true;
+    try { localStorage.setItem("quizBattleLevel2Unlocked","yes"); } catch(e) {}
+  }
+  $("progress").style.width="100%";showScreen("result");if(mode==="normal"){const s=scores[0];$("resultEmoji").textContent=s===5?"🏆":s>=3?"🎉":"😄";$("resultTitle").textContent=tr("resultTitle");$("resultContent").innerHTML="";const n=document.createElement("div");n.className="result-score";n.textContent=s+" из "+questions.length;const m=document.createElement("p");m.textContent=soloMessage(s);$("resultContent").append(n,m)}else{const[a,b]=scores;$("resultEmoji").textContent=a===b?"🤝":"🏆";$("resultTitle").textContent=tr("duelDone");const w=document.createElement("div");w.className="winner";w.textContent=a>b?tr("winner")+playerNames[0]+"!":b>a?tr("winner")+playerNames[1]+"!":tr("draw");const board=document.createElement("div");board.className="scoreboard";scores.forEach((s,i)=>{const c=document.createElement("div");c.className="player-result";const n=document.createElement("strong");n.textContent=playerNames[i];const p=document.createElement("div");p.className="points";p.textContent=s+" / "+questions.length;c.append(n,p);board.appendChild(c)});const m=document.createElement("p");m.textContent=a===b?tr("drawMsg"):tr("duelMsg");$("resultContent").innerHTML="";$("resultContent").append(w,board,m);
+    const rematch=document.createElement("div");rematch.className="rematch-box";
+    const status=document.createElement("p");status.className="rematch-status";status.id="rematchStatus";
+    const controls=document.createElement("div");controls.className="result-actions";
+    const loserIndex=a===b?-1:(a<b?0:1),winnerIndex=a===b?-1:(a>b?0:1);
+    if(loserIndex===-1){
+      status.textContent=tr("rematchBoth");
+      const req1=document.createElement("button");req1.className="primary";req1.textContent=playerNames[0]+": "+tr("rematchAsk");
+      const req2=document.createElement("button");req2.className="primary";req2.textContent=playerNames[1]+": "+tr("rematchAsk");
+      let requestedBy=new Set();
+      const request=(idx,otherBtn)=>{requestedBy.add(idx);status.textContent=playerNames[idx]+" — "+tr("rematchRequested");otherBtn.disabled=false;if(requestedBy.size===2){status.textContent=tr("rematchBoth");}};
+      req1.addEventListener("click",()=>request(0,req2));req2.addEventListener("click",()=>request(1,req1));
+      controls.append(req1,req2);
+    } else {
+      status.textContent=playerNames[loserIndex]+", "+tr("rematchAsk");
+      const requestBtn=document.createElement("button");requestBtn.className="primary";requestBtn.textContent=playerNames[loserIndex]+": "+tr("rematchAsk");
+      const acceptBtn=document.createElement("button");acceptBtn.className="primary";acceptBtn.textContent=playerNames[winnerIndex]+": "+tr("rematchAccept");acceptBtn.disabled=true;
+      const declineBtn=document.createElement("button");declineBtn.className="secondary";declineBtn.textContent=tr("rematchDeclined");declineBtn.disabled=true;
+      requestBtn.addEventListener("click",()=>{status.textContent=tr("rematchRequested");requestBtn.disabled=true;acceptBtn.disabled=false;declineBtn.disabled=false;});
+      acceptBtn.addEventListener("click",()=>{questions=language==="ru"?(currentLevel===1?level1Questions:level2Questions):translatedQuestions[language][currentLevel];resetGame();showScreen("setup");});
+      declineBtn.addEventListener("click",()=>{status.textContent=tr("rematchDeclined");acceptBtn.disabled=true;declineBtn.disabled=true;});
+      controls.append(requestBtn,acceptBtn,declineBtn);
+    }
+    rematch.append(status,controls);$("resultContent").append(rematch);
+  }updateHeader()}
+$("playAgain").addEventListener("click",()=>{questions=language==="ru"?(currentLevel===1?level1Questions:level2Questions):translatedQuestions[language][currentLevel];resetGame();if(mode==="duel")showScreen("setup");else startGame()});
+$("goHome").addEventListener("click",()=>{resetGame();updateLevelPicker();showScreen("home")});
+</script>
+</body>
+</html>
