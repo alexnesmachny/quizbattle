@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "quizbattle",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "vars": {
+    "GAME_URL": "https://quizbattle.alex.nesmachny.net/",
+    "ALLOWED_ORIGINS": "https://quizbattle.alex.nesmachny.net,https://alexnesmachny.github.io,http://localhost:8000,http://127.0.0.1:8000",
+    "MAIL_FROM": "alex@nesmachny.net",
+    // Abuse guards: the Email Sending quota is shared with other projects on this account.
+    "INVITES_PER_DAY": "30",
+    "INVITES_PER_IP_HOUR": "5",
+    "INVITES_PER_RECIPIENT_DAY": "3"
+  },
+  "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["alex@nesmachny.net"] }],
+  "durable_objects": {
+    "bindings": [
+      { "name": "ROOMS", "class_name": "GameRoom" },
+      { "name": "QUOTA", "class_name": "InviteQuota" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameRoom", "InviteQuota"] }]
+}
