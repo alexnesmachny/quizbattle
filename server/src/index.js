@@ -1,12 +1,12 @@
-// QuizBattle online: invite e-mail + real-time duel rooms (one Durable Object per room).
+// QuizBattle online: "who knows whom better" duel. Each player writes 5 questions about
+// themselves; then each guesses the opponent's answers with a per-question timer.
+// One Durable Object per room; an e-mail invitation brings in the second player.
 import { DurableObject } from "cloudflare:workers";
 
-// Correct answer index per question; must match the question order in index.html.
-const ANSWERS = { 1: [1, 2, 0, 3, 2], 2: [1, 1, 2, 3] };
-const TIME_LIMITS = { 1: 10, 2: 7 }; // seconds per answer
+const QUESTION_COUNT = 5;
+const TIME_LIMITS = [10, 7]; // allowed seconds per answer, chosen by the host
 const GRACE_MS = 600; // network slack after the visible timer hits 0
-const REVEAL_MS = 3500; // how long the correct answer stays on screen
-const ROOM_TTL_MS = 24 * 3600 * 1000;
+const ROOM_TTL_MS = 7 * 24 * 3600 * 1000;
 const LANGS = ["ru", "en", "pt"];
 
 const NAME_RE = /^[\p{L}\p{N} _'-]{1,20}$/u; // no dots/slashes: names cannot carry links into the e-mail
@@ -14,6 +14,22 @@ const EMAIL_RE = /^[^\s@<>()",;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
 
 const randomId = (bytes) =>
   [...crypto.getRandomValues(new Uint8Array(bytes))].map((b) => b.toString(16).padStart(2, "0")).join("");
+
+// Returns a clean question set or null. Text is shown only to the invited opponent, via textContent.
+function parseQuestions(input) {
+  if (!Array.isArray(input) || input.length !== QUESTION_COUNT) return null;
+  const clean = (v, max) => String(v ?? "").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, max);
+  const out = [];
+  for (const q of input) {
+    const text = clean(q?.text, 120);
+    const answers = Array.isArray(q?.answers) ? q.answers.slice(0, 4).map((a) => clean(a, 40)) : [];
+    const correct = Number(q?.correct);
+    if (!text || answers.length !== 4 || answers.some((a) => !a)) return null;
+    if (!Number.isInteger(correct) || correct < 0 || correct > 3) return null;
+    out.push({ text, answers, correct });
+  }
+  return out;
+}
 
 function cors(request, env) {
   const origin = request.headers.get("Origin") || "";
@@ -54,12 +70,14 @@ async function handleInvite(request, env, corsHeaders) {
   const friendName = String(body.friendName || "").trim();
   const hostEmail = String(body.hostEmail || "").trim().toLowerCase();
   const friendEmail = String(body.friendEmail || "").trim().toLowerCase();
-  const level = body.level === 2 ? 2 : 1;
+  const timeLimit = TIME_LIMITS.includes(body.timeLimit) ? body.timeLimit : TIME_LIMITS[0];
   const lang = LANGS.includes(body.lang) ? body.lang : "ru";
+  const questions = parseQuestions(body.questions);
 
   if (!NAME_RE.test(hostName) || !NAME_RE.test(friendName)) return json({ error: "bad_name" }, 400, corsHeaders);
   if (!EMAIL_RE.test(hostEmail) || !EMAIL_RE.test(friendEmail)) return json({ error: "bad_email" }, 400, corsHeaders);
   if (hostEmail === friendEmail) return json({ error: "same_email" }, 400, corsHeaders);
+  if (!questions) return json({ error: "bad_questions" }, 400, corsHeaders);
 
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   const quota = await env.QUOTA.getByName("global").take(ip, friendEmail, {
@@ -71,11 +89,11 @@ async function handleInvite(request, env, corsHeaders) {
   const hostToken = randomId(16);
   const guestToken = randomId(16);
   const room = env.ROOMS.getByName(roomId);
-  await room.init({ names: [hostName, friendName], tokens: [hostToken, guestToken], level });
+  await room.init({ names: [hostName, friendName], tokens: [hostToken, guestToken], timeLimit, hostQuestions: questions });
 
   const link = `${env.GAME_URL}?room=${roomId}&t=${guestToken}&lang=${lang}`;
   try {
-    await env.EMAIL.send({ ...inviteEmail(lang, hostName, friendName, link, level), to: friendEmail, from: { email: env.MAIL_FROM, name: "QuizBattle" }, replyTo: hostEmail });
+    await env.EMAIL.send({ ...inviteEmail(lang, hostName, friendName, link, timeLimit), to: friendEmail, from: { email: env.MAIL_FROM, name: "QuizBattle" }, replyTo: hostEmail });
   } catch (e) {
     console.error("invite send failed", e.code, e.message);
     await room.destroy();
@@ -86,28 +104,28 @@ async function handleInvite(request, env, corsHeaders) {
 
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
-function inviteEmail(lang, host, friend, link, level) {
+function inviteEmail(lang, host, friend, link, sec) {
   const t = {
     ru: {
       subject: `${host} вызывает тебя на дуэль в QuizBattle ⚔️`,
       hi: `Привет, ${friend}!`,
-      body: `${host} приглашает тебя сыграть онлайн в QuizBattle — викторину «Насколько хорошо ты знаешь Alex?» (уровень ${level}). Вы будете отвечать на одни и те же вопросы одновременно, каждый со своего устройства. На ответ — ${TIME_LIMITS[level]} секунд!`,
+      body: `${host} придумал(а) ${QUESTION_COUNT} вопросов о себе и вызывает тебя на дуэль «Кто кого лучше знает?». Открой ссылку и придумай ${QUESTION_COUNT} вопросов о себе: их будет угадывать ${host}, а ты угадываешь ответы на вопросы соперника. Каждый угадывает ответы соперника, на ответ — ${sec} секунд.`,
       cta: "Принять вызов 🚀",
-      note: "Ссылка действует 24 часа. Если ты не знаешь отправителя, просто проигнорируй это письмо.",
+      note: "Ссылка действует 7 дней. Если ты не знаешь отправителя, просто проигнорируй это письмо.",
     },
     en: {
       subject: `${host} challenges you to a QuizBattle duel ⚔️`,
       hi: `Hi ${friend}!`,
-      body: `${host} invites you to play QuizBattle online — the "How well do you know Alex?" quiz (Level ${level}). You'll both answer the same questions at the same time, each on your own device. You have ${TIME_LIMITS[level]} seconds per answer!`,
+      body: `${host} wrote ${QUESTION_COUNT} questions about themselves and challenges you to a "Who knows whom better?" duel. Open the link, write ${QUESTION_COUNT} questions about yourself for ${host}, and the battle begins! Each of you guesses the other's answers, ${sec} seconds per answer.`,
       cta: "Accept the challenge 🚀",
-      note: "The link is valid for 24 hours. If you don't know the sender, just ignore this e-mail.",
+      note: "The link is valid for 7 days. If you don't know the sender, just ignore this e-mail.",
     },
     pt: {
       subject: `${host} desafia-te para um duelo no QuizBattle ⚔️`,
       hi: `Olá, ${friend}!`,
-      body: `${host} convida-te a jogar QuizBattle online — o quiz «Quão bem conheces o Alex?» (Nível ${level}). Vão responder às mesmas perguntas ao mesmo tempo, cada um no seu dispositivo. Tens ${TIME_LIMITS[level]} segundos por resposta!`,
+      body: `${host} escreveu ${QUESTION_COUNT} perguntas sobre si e desafia-te para o duelo «Quem conhece melhor quem?». Abre o link, escreve ${QUESTION_COUNT} perguntas sobre ti para ${host} e começa o duelo! Cada um adivinha as respostas do outro, ${sec} segundos por resposta.`,
       cta: "Aceitar o desafio 🚀",
-      note: "O link é válido durante 24 horas. Se não conheces o remetente, ignora este e-mail.",
+      note: "O link é válido durante 7 dias. Se não conheces o remetente, ignora este e-mail.",
     },
   }[lang];
   const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#17134b;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#ffffff">
@@ -151,13 +169,12 @@ export class InviteQuota extends DurableObject {
   }
 }
 
-// One instance per game room. Players are p0 (host) and p1 (invited friend).
+// One instance per room. p0 = host, p1 = invited friend; player i answers sets[1 - i].
+// play[i].phase: idle → question → reveal → question … → done.
 export class GameRoom extends DurableObject {
-  async init({ names, tokens, level }) {
-    const s = {
-      names, tokens, level, phase: "lobby", ready: [false, false], q: 0, deadline: 0,
-      picks: [null, null], scores: [0, 0], rematch: [false, false], expires: Date.now() + ROOM_TTL_MS,
-    };
+  async init({ names, tokens, timeLimit, hostQuestions }) {
+    const idle = () => ({ phase: "idle", q: 0, deadline: 0, picks: [] });
+    const s = { v: 2, names, tokens, timeLimit, sets: [hostQuestions, null], play: [idle(), idle()], expires: Date.now() + ROOM_TTL_MS };
     await this.ctx.storage.put("s", s);
     await this.ctx.storage.setAlarm(s.expires);
   }
@@ -171,8 +188,8 @@ export class GameRoom extends DurableObject {
   async fetch(request) {
     const s = await this.ctx.storage.get("s");
     const token = new URL(request.url).searchParams.get("t");
-    const player = s ? s.tokens.indexOf(token) : -1;
-    if (!s || player === -1 || Date.now() > s.expires) return new Response("room not found", { status: 404 });
+    const player = s?.v === 2 ? s.tokens.indexOf(token) : -1;
+    if (player === -1 || Date.now() > s.expires) return new Response("room not found", { status: 404 });
 
     // A player reconnecting (refresh, flaky network) replaces their old socket.
     for (const old of this.ctx.getWebSockets(`p${player}`)) old.close(4001, "replaced");
@@ -183,33 +200,30 @@ export class GameRoom extends DurableObject {
   }
 
   async webSocketMessage(ws, raw) {
-    const player = this.ctx.getTags(ws)[0] === "p0" ? 0 : 1;
+    const me = this.ctx.getTags(ws)[0] === "p0" ? 0 : 1;
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
+    if (msg.t === "ping") { ws.send(JSON.stringify({ type: "pong" })); return; }
     const s = await this.ctx.storage.get("s");
     if (!s) return;
+    const p = s.play[me];
 
-    if (msg.t === "ready" && s.phase === "lobby") {
-      s.ready[player] = true;
-      if (s.ready[0] && s.ready[1]) this.startQuestion(s, 0);
-    } else if (msg.t === "answer" && s.phase === "question" && msg.q === s.q && s.picks[player] === null) {
+    if (msg.t === "questions" && !s.sets[me]) {
+      const set = parseQuestions(msg.questions);
+      if (!set) { ws.send(JSON.stringify({ type: "error", error: "bad_questions" })); return; }
+      s.sets[me] = set;
+    } else if (msg.t === "start" && s.sets[0] && s.sets[1] && p.phase === "idle") {
+      this.startQuestion(s, me, 0);
+    } else if (msg.t === "answer" && p.phase === "question" && msg.q === p.q) {
       const choice = Number(msg.choice);
-      s.picks[player] = Number.isInteger(choice) && choice >= 0 && choice <= 3 ? choice : -1;
-      if (s.picks[0] !== null && s.picks[1] !== null) this.reveal(s);
-    } else if (msg.t === "rematch" && s.phase === "done") {
-      s.rematch[player] = true;
-      if (s.rematch[0] && s.rematch[1]) {
-        s.scores = [0, 0];
-        s.rematch = [false, false];
-        this.startQuestion(s, 0);
-      }
-    } else if (msg.t === "ping") {
-      ws.send(JSON.stringify({ type: "pong" }));
-      return;
+      const late = Date.now() > p.deadline;
+      this.reveal(p, !late && Number.isInteger(choice) && choice >= 0 && choice <= 3 ? choice : -1);
+    } else if (msg.t === "next" && p.phase === "reveal") {
+      if (p.q + 1 < QUESTION_COUNT) this.startQuestion(s, me, p.q + 1);
+      else p.phase = "done";
     } else {
       return;
     }
-    s.expires = Math.max(s.expires, Date.now() + 3600e3);
     await this.save(s);
   }
 
@@ -222,51 +236,52 @@ export class GameRoom extends DurableObject {
     const s = await this.ctx.storage.get("s");
     if (!s) return;
     const now = Date.now();
-    if (s.phase === "question" && now >= s.deadline) {
-      s.picks = s.picks.map((p) => (p === null ? -1 : p)); // unanswered = time is up
-      this.reveal(s);
-    } else if (s.phase === "reveal" && now >= s.deadline) {
-      if (s.q + 1 < ANSWERS[s.level].length) this.startQuestion(s, s.q + 1);
-      else s.phase = "done";
-    } else if (now >= s.expires) {
-      return this.destroy();
-    }
+    if (now >= s.expires) return this.destroy();
+    for (const p of s.play) if (p.phase === "question" && now >= p.deadline) this.reveal(p, -1); // time is up
     await this.save(s);
   }
 
-  startQuestion(s, q) {
-    s.phase = "question";
-    s.q = q;
-    s.picks = [null, null];
-    s.deadline = Date.now() + TIME_LIMITS[s.level] * 1000 + GRACE_MS;
+  startQuestion(s, i, q) {
+    Object.assign(s.play[i], { phase: "question", q, deadline: Date.now() + s.timeLimit * 1000 + GRACE_MS });
   }
 
-  reveal(s) {
-    const correct = ANSWERS[s.level][s.q];
-    s.picks.forEach((p, i) => { if (p === correct) s.scores[i]++; });
-    s.phase = "reveal";
-    s.deadline = Date.now() + REVEAL_MS;
+  reveal(p, pick) {
+    p.picks[p.q] = pick;
+    p.phase = "reveal";
   }
 
   async save(s) {
+    s.expires = Math.max(s.expires, Date.now() + 24 * 3600e3);
     await this.ctx.storage.put("s", s);
-    await this.ctx.storage.setAlarm(s.phase === "question" || s.phase === "reveal" ? s.deadline : s.expires);
+    const deadlines = s.play.filter((p) => p.phase === "question").map((p) => p.deadline);
+    await this.ctx.storage.setAlarm(Math.min(s.expires, ...deadlines));
     this.broadcast(s);
   }
 
-  // Each player gets their own view: the opponent's pick stays hidden until the reveal.
+  // Each player sees the opponent's questions one at a time; correct answers only after answering.
   broadcast(s, closing) {
     const sockets = this.ctx.getWebSockets().filter((ws) => ws !== closing);
     const connected = [0, 1].map((i) => sockets.some((ws) => this.ctx.getTags(ws)[0] === `p${i}`));
-    const shown = s.phase === "reveal" || s.phase === "done";
+    const score = (i) => s.play[i].picks.filter((pick, k) => pick === s.sets[1 - i][k].correct).length;
+    const bothDone = s.play.every((p) => p.phase === "done");
     for (const ws of sockets) {
-      const you = this.ctx.getTags(ws)[0] === "p0" ? 0 : 1;
+      const me = this.ctx.getTags(ws)[0] === "p0" ? 0 : 1;
+      const opp = 1 - me;
+      const p = s.play[me];
+      const q = p.phase === "question" || p.phase === "reveal" ? s.sets[opp][p.q] : null;
       const view = {
-        type: "state", you, names: s.names, level: s.level, phase: s.phase, connected, ready: s.ready,
-        q: s.q, total: ANSWERS[s.level].length, limit: TIME_LIMITS[s.level],
-        remaining: s.phase === "question" ? Math.max(0, s.deadline - GRACE_MS - Date.now()) : 0,
-        answered: s.picks.map((p) => p !== null), myPick: s.picks[you], scores: s.scores, rematch: s.rematch,
-        reveal: shown ? { picks: s.picks, correct: ANSWERS[s.level][s.q] } : null,
+        type: "state", you: me, names: s.names, connected, limit: s.timeLimit, total: QUESTION_COUNT,
+        submitted: s.sets.map(Boolean),
+        me: {
+          phase: p.phase, q: p.q, score: s.sets[opp] ? score(me) : 0,
+          remaining: p.phase === "question" ? Math.max(0, p.deadline - GRACE_MS - Date.now()) : 0,
+          question: q && { text: q.text, answers: q.answers },
+          pick: p.phase === "reveal" ? p.picks[p.q] : null,
+          correct: p.phase === "reveal" ? q.correct : null,
+        },
+        opp: { phase: s.play[opp].phase, q: s.play[opp].q, answered: s.play[opp].picks.length, score: s.sets[me] ? score(opp) : 0 },
+        // Full review once both players are finished: how each guessed the other's questions.
+        review: bothDone ? { theirQuestions: s.sets[opp].map((x, k) => ({ ...x, pick: s.play[me].picks[k] })), myQuestions: s.sets[me].map((x, k) => ({ ...x, pick: s.play[opp].picks[k] })) } : null,
       };
       try { ws.send(JSON.stringify(view)); } catch {}
     }

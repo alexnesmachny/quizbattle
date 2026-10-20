@@ -8,7 +8,7 @@
 :root{--bg:#17134b;--yellow:#ffd447;--pink:#ff4f91;--blue:#3989ff;--green:#20c997}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:radial-gradient(circle at 10% 15%,#4d32a0 0,transparent 30%),radial-gradient(circle at 90% 80%,#76286e 0,transparent 28%),var(--bg);display:flex;justify-content:center;align-items:center;padding:16px}
 button,input{font:inherit}.app{width:100%;max-width:760px;margin:auto}.header-right{display:flex;align-items:center;gap:8px}.header-right select{max-width:125px;background:#29216e;color:#fff;border:2px solid #ffffff30;border-radius:12px;padding:9px 7px;font-weight:800}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.logo{font-size:clamp(20px,5vw,29px);font-weight:1000;letter-spacing:-1px}.logo span{color:var(--yellow)}.score{background:#ffffff1c;border:2px solid #ffffff30;padding:10px 15px;border-radius:16px;font-weight:900;white-space:nowrap}.panel{background:#ffffff0d;border:2px solid #ffffff20;border-radius:28px;padding:clamp(20px,5vw,36px);box-shadow:0 20px 60px #0003}.center{text-align:center}.emoji{font-size:clamp(52px,12vw,82px);line-height:1.2;margin-bottom:12px}h1{font-size:clamp(29px,7vw,48px);line-height:1.12;margin:10px 0 16px;letter-spacing:-1px}h2{font-size:clamp(23px,5vw,34px);line-height:1.2;margin:12px 0 24px}p{color:#e5e1ff;font-size:16px;line-height:1.6}.muted{color:#c8c1f4}.primary,.secondary{border:0;border-radius:17px;padding:15px 22px;min-height:54px;font-weight:900;cursor:pointer;transition:transform .15s,filter .15s}.primary{color:#24184d;background:var(--yellow);box-shadow:0 5px 0 #c99e20}.secondary{color:white;background:#ffffff18;border:2px solid #ffffff30}button:hover{filter:brightness(1.08)}button:active{transform:translateY(2px)}button:focus-visible,input:focus-visible{outline:3px solid white;outline-offset:4px}.level-picker{margin:20px 0 8px}.level-picker p{margin:8px 0}.level-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.level-button{border:2px solid #ffffff35;border-radius:14px;padding:13px 10px;background:#ffffff12;color:#fff;font-weight:900;cursor:pointer}.level-button.active{background:var(--yellow);color:#24184d;border-color:var(--yellow);box-shadow:0 4px 0 #c99e20}.level-button:disabled{opacity:.48;cursor:not-allowed;filter:grayscale(.6);box-shadow:none}.level-button:disabled:hover{filter:grayscale(.6)}.mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.mode-card{border-radius:20px;padding:18px 10px;font-weight:900;font-size:17px;min-height:110px;border:0;cursor:pointer;color:white}.mode-card span{display:block;font-size:30px;margin-bottom:7px}.mode-normal{background:var(--blue);box-shadow:0 5px 0 #2055a7}.mode-duel{background:var(--pink);box-shadow:0 5px 0 #a62b60}.name-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;text-align:left}.name-fields label{font-weight:800;font-size:14px}.name-fields input{display:block;width:100%;margin-top:7px;border:2px solid #ffffff35;background:#17134b;color:white;padding:13px;border-radius:12px;min-width:0}.name-fields input::placeholder{color:#b8b0e4}.email-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 20px;text-align:left}.email-fields label{font-weight:800;font-size:14px}.email-fields input{display:block;width:100%;margin-top:7px;border:2px solid #ffffff35;background:#17134b;color:white;padding:13px;border-radius:12px;min-width:0}.email-fields input::placeholder{color:#b8b0e4}.rematch-box{margin:18px 0;padding:18px;background:#ffffff12;border:2px solid #ffffff30;border-radius:18px}.rematch-box p{line-height:1.5}.rematch-status{font-weight:900;color:var(--yellow);margin:12px 0}.progress-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:14px;font-weight:800}.progress-track{height:10px;background:#ffffff20;border-radius:99px;overflow:hidden;margin-bottom:25px}.progress{height:100%;width:0;background:var(--yellow);border-radius:99px;transition:width .25s}.question{background:white;color:#261d59;border-radius:20px;padding:24px 18px;font-size:clamp(21px,5vw,30px);font-weight:950;text-align:center;line-height:1.3;margin-bottom:18px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{color:white;border:0;border-radius:17px;min-height:88px;padding:17px 12px;font-size:clamp(15px,3.5vw,19px);font-weight:900;text-align:left;display:flex;align-items:center;gap:11px;cursor:pointer;overflow-wrap:anywhere;box-shadow:0 5px 0 #0002}.answer .letter{display:grid;place-items:center;width:34px;height:34px;min-width:34px;border-radius:10px;background:#0002;font-weight:1000}.answer:nth-child(1){background:#e84b66}.answer:nth-child(2){background:#287be0}.answer:nth-child(3){background:#169e79}.answer:nth-child(4){background:#d68b16}.answer:disabled{cursor:default;opacity:.82}.answer.correct{outline:4px solid white;background:#10a96f;opacity:1}.answer.wrong{background:#b83d50;opacity:1}.feedback{margin-top:18px;border-radius:15px;padding:14px;background:#ffffff15;text-align:center;font-weight:800;line-height:1.5}.next-row{display:flex;justify-content:center;margin-top:18px}.hidden{display:none!important}.handoff{padding:20px 10px;background:#ffffff12;border:2px dashed #ffffff35;border-radius:20px;margin-top:10px}.result-score{font-size:clamp(48px,13vw,78px);font-weight:1000;color:var(--yellow);line-height:1.1;margin:18px 0}.winner{font-size:clamp(25px,6vw,40px);font-weight:1000;color:var(--yellow);margin:18px 0;overflow-wrap:anywhere}.scoreboard{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.player-result{background:#ffffff12;border:2px solid #ffffff25;border-radius:18px;padding:18px 10px;overflow-wrap:anywhere}.player-result strong{display:block;font-size:19px;margin-bottom:12px}.player-result .points{font-size:36px;font-weight:1000;color:var(--yellow)}.result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}.footer{text-align:center;color:#c8c1f4;font-size:12px;margin-top:18px}.hidden{display:none!important}
-.mode-online{grid-column:1/-1;min-height:84px;background:var(--green);box-shadow:0 5px 0 #138a66}.invite-error{color:#ffb3c8;font-weight:800;min-height:1.6em}.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.lobby-players{display:grid;gap:8px;margin:18px auto;max-width:420px;text-align:left;font-weight:800}.lobby-players div{background:#ffffff12;border:2px solid #ffffff25;border-radius:14px;padding:12px 14px;overflow-wrap:anywhere}.share-box{margin:18px auto;max-width:520px;text-align:left}.share-box p{margin:0 0 8px;font-size:14px}.share-row{display:flex;gap:8px}.share-row input{flex:1;min-width:0;border:2px solid #ffffff35;background:#17134b;color:#fff;padding:11px;border-radius:12px;font-size:13px}.share-row button{min-height:44px;padding:10px 14px}.answer.picked{outline:4px solid var(--yellow);opacity:1}.timer{display:flex;justify-content:center;align-items:center;gap:8px;margin:-10px auto 16px;width:max-content;min-width:96px;padding:8px 18px;border-radius:99px;background:#ffffff1c;border:2px solid #ffffff30;font-size:22px;font-weight:1000;font-variant-numeric:tabular-nums}.timer.danger{background:var(--pink);border-color:var(--pink);animation:pulse .5s ease-in-out infinite alternate}@keyframes pulse{to{transform:scale(1.08)}}
+.mode-online{grid-column:1/-1;min-height:84px;background:var(--green);box-shadow:0 5px 0 #138a66}.invite-error{color:#ffb3c8;font-weight:800;min-height:1.6em}.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.lobby-players{display:grid;gap:8px;margin:18px auto;max-width:420px;text-align:left;font-weight:800}.lobby-players div{background:#ffffff12;border:2px solid #ffffff25;border-radius:14px;padding:12px 14px;overflow-wrap:anywhere}.share-box{margin:18px auto;max-width:520px;text-align:left}.share-box p{margin:0 0 8px;font-size:14px}.share-row{display:flex;gap:8px}.share-row input{flex:1;min-width:0;border:2px solid #ffffff35;background:#17134b;color:#fff;padding:11px;border-radius:12px;font-size:13px}.share-row button{min-height:44px;padding:10px 14px}.answer.picked{outline:4px solid var(--yellow);opacity:1}.time-picker{margin:4px 0 8px}.time-picker p{margin:8px 0;font-weight:800}.q-editor{text-align:left;margin:8px 0 4px}.q-editor h3{font-size:20px;margin:24px 0 4px;text-align:center}.q-card{background:#ffffff0d;border:2px solid #ffffff20;border-radius:18px;padding:14px;margin:12px 0}.q-card .q-title{font-weight:900;color:var(--yellow);margin-bottom:8px}.q-card input[type=text]{display:block;width:100%;border:2px solid #ffffff35;background:#17134b;color:#fff;padding:11px;border-radius:12px;min-width:0}.q-card input[type=text]::placeholder{color:#b8b0e4}.q-card .q-text{font-weight:800}.q-row{display:flex;align-items:center;gap:10px;margin-top:8px}.q-row input[type=radio]{width:24px;height:24px;min-width:24px;accent-color:var(--green);cursor:pointer}.my-duels{margin-top:18px;display:grid;gap:8px}.my-duels p{margin:0}.my-duels button{width:100%}.review{text-align:left;margin:22px 0}.review h3{font-size:19px;margin:18px 0 8px}.review ol{margin:0;padding-left:22px}.review li{margin:8px 0;line-height:1.45;color:#e5e1ff;overflow-wrap:anywhere}.review li b{color:#fff}.review .muted{font-size:14px}.timer{display:flex;justify-content:center;align-items:center;gap:8px;margin:-10px auto 16px;width:max-content;min-width:96px;padding:8px 18px;border-radius:99px;background:#ffffff1c;border:2px solid #ffffff30;font-size:22px;font-weight:1000;font-variant-numeric:tabular-nums}.timer.danger{background:var(--pink);border-color:var(--pink);animation:pulse .5s ease-in-out infinite alternate}@keyframes pulse{to{transform:scale(1.08)}}
 @media(max-width:480px){.email-fields{grid-template-columns:1fr}.name-fields{grid-template-columns:1fr}}
 @media(max-width:480px){.header-right{gap:5px}.header-right select{max-width:95px;font-size:12px;padding:8px 4px}.score{padding:8px 9px;font-size:13px}body{padding:10px;align-items:flex-start}.app{margin:8px auto}.panel{padding:20px 14px;border-radius:22px}.answers{gap:9px}.answer{min-height:92px;padding:12px 9px;gap:7px}.answer .letter{width:29px;height:29px;min-width:29px}.name-fields{grid-template-columns:1fr}.mode-card{font-size:15px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
@@ -24,16 +24,22 @@ button,input{font:inherit}.app{width:100%;max-width:760px;margin:auto}.header-ri
 </div>
 <p class="muted" id="levelDescription">5 вопросов о тебе</p>
 </div>
-<div class="mode-buttons"><button class="mode-card mode-normal" id="normalMode"><span>🙋</span>Один игрок</button><button class="mode-card mode-duel" id="duelMode"><span>⚔️</span>Дуэль вдвоём</button><button class="mode-card mode-online" id="onlineMode"><span>🌐</span>Играть онлайн</button></div><p class="muted" id="pointRule">За каждый правильный ответ — 1 очко.</p></section>
+<div class="mode-buttons"><button class="mode-card mode-normal" id="normalMode"><span>🙋</span>Один игрок</button><button class="mode-card mode-duel" id="duelMode"><span>⚔️</span>Дуэль вдвоём</button><button class="mode-card mode-online" id="onlineMode"><span>🌐</span>Играть онлайн</button></div><div class="my-duels hidden" id="myDuels"></div><p class="muted" id="pointRule">За каждый правильный ответ — 1 очко.</p></section>
 <section class="panel center hidden" id="setup"><div class="emoji">⚔️</div><h2>Готовы к дуэли?</h2><p>Введите имена игроков. Вы будете отвечать по очереди на одни и те же вопросы.</p><div class="name-fields"><label>Игрок 1<input id="name1" maxlength="20" placeholder="Например, Маша"></label><label>Игрок 2<input id="name2" maxlength="20" placeholder="Например, Петя"></label></div><div class="email-fields"><label id="emailLabel1">Email игрока 1<input id="email1" type="email" autocomplete="email" placeholder="player1@example.com"></label><label id="emailLabel2">Email игрока 2<input id="email2" type="email" autocomplete="email" placeholder="player2@example.com"></label></div><p class="muted" id="timerNote"></p><p class="muted" id="emailNote">Email здесь только для заполнения — он не отправляется и не подключает игроков удалённо.</p><div class="result-actions"><button class="primary" id="startDuel">Начать дуэль! 🚀</button><button class="secondary" id="backHome">Назад</button></div></section>
-<section class="panel center hidden" id="invite"><div class="emoji">✉️🌐</div><h2 id="inviteTitle">Пригласи друга</h2><p id="inviteText"></p>
+<section class="panel center hidden" id="invite"><div class="emoji">✉️⚔️</div><h2 id="inviteTitle"></h2><p id="inviteText"></p>
 <form id="inviteForm" novalidate><div class="name-fields"><label id="hostNameLabel">Твоё имя<input id="hostName" maxlength="20" autocomplete="given-name" required></label><label id="hostEmailLabel">Твой email<input id="hostEmail" type="email" autocomplete="email" required></label><label id="friendNameLabel">Имя друга<input id="friendName" maxlength="20" autocomplete="off" required></label><label id="friendEmailLabel">Email друга<input id="friendEmail" type="email" autocomplete="off" required></label></div>
+<div class="time-picker"><p id="timeLabel"></p><div class="level-buttons"><button class="level-button active" id="time10" type="button"></button><button class="level-button" id="time7" type="button"></button></div></div>
+<div class="q-editor"><h3 id="hostQTitle"></h3><p class="muted center" id="hostQHint"></p><div id="hostEditor"></div></div>
 <label class="hp" aria-hidden="true">Website<input id="website" tabindex="-1" autocomplete="off"></label>
 <p class="invite-error" id="inviteError" aria-live="polite"></p>
-<div class="result-actions"><button class="primary" id="sendInvite" type="submit">Отправить приглашение ✉️</button><button class="secondary" id="inviteBack" type="button">Назад</button></div></form></section>
-<section class="panel center hidden" id="lobby"><div class="emoji">⚔️🌐</div><h2 id="lobbyTitle"></h2><p id="lobbyText"></p><div class="lobby-players" id="lobbyPlayers"></div>
+<div class="result-actions"><button class="primary" id="sendInvite" type="submit"></button><button class="secondary" id="inviteBack" type="button"></button></div></form></section>
+<section class="panel center hidden" id="compose"><div class="emoji">✍️⚔️</div><h2 id="composeTitle"></h2><p id="composeText"></p>
+<div class="q-editor"><p class="muted center" id="guestQHint"></p><div id="guestEditor"></div></div>
+<p class="invite-error" id="composeError" aria-live="polite"></p>
+<div class="result-actions"><button class="primary" id="sendQuestions" type="button"></button></div></section>
+<section class="panel center hidden" id="lobby"><div class="emoji" id="lobbyEmoji">⚔️🌐</div><h2 id="lobbyTitle"></h2><p id="lobbyText"></p><div class="lobby-players" id="lobbyPlayers"></div>
 <div class="share-box hidden" id="shareBox"><p id="shareLabel"></p><div class="share-row"><input id="shareLink" readonly><button class="secondary" id="copyLink" type="button">Скопировать</button></div></div>
-<div class="result-actions"><button class="primary" id="lobbyReady">Я готов(а)!</button><button class="secondary" id="lobbyHome">На главную</button></div></section>
+<div class="result-actions"><button class="primary hidden" id="lobbyStart"></button><button class="secondary" id="lobbyHome">На главную</button></div></section>
 <section class="panel hidden" id="game"><div class="progress-row"><span id="questionCount">Вопрос 1 из 5</span><span id="turnLabel">Твой ход!</span></div><div class="progress-track"><div class="progress" id="progress"></div></div><div class="timer hidden" id="timer" role="timer" aria-live="off">⏱ <span id="timerValue">10</span></div><div class="question" id="questionText"></div><div class="answers" id="answers"></div><div class="handoff hidden center" id="handoff"><div class="emoji">📱🔄</div><h2 id="handoffTitle">Передай телефон</h2><p id="handoffText">Не подглядывай в ответы другого игрока!</p><button class="primary" id="readyButton">Я готов(а)!</button></div><div class="feedback hidden" id="feedback" aria-live="polite"></div><div class="next-row hidden" id="nextRow"><button class="primary" id="nextButton">Дальше ➜</button></div></section>
 <section class="panel center hidden" id="result"><div class="emoji" id="resultEmoji">🏆</div><h1 id="resultTitle">Результат!</h1><div id="resultContent"></div><div class="result-actions"><button class="primary" id="playAgain">Играть снова 🔄</button><button class="secondary" id="goHome">На главную</button></div></section>
 <div class="footer">QuizBattle • Проверь дружбу! 💜</div>
@@ -92,23 +98,23 @@ const translations = {
 ru: {
 score:"⭐ Счёт: ",title:"Насколько хорошо ты меня знаешь?",intro:"Проверь, насколько хорошо ты знаешь Alex! Отвечай на вопросы, набирай очки и побеждай.",
 chooseLevel:"Выбери уровень:",level1:"⭐ Уровень 1",level2:"🚀 Уровень 2",level2Locked:"🔒 Уровень 2",levelDesc:"5 вопросов о тебе",unlockDesc:"Сначала пройди уровень 1, чтобы открыть уровень 2",unlockedDesc:"Уровень 1 пройден! Теперь доступен уровень 2",level2Desc:"4 новых вопроса о твоей машине, городе и доме",onePlayer:"Один игрок",duel:"Дуэль вдвоём",pointRule:"За каждый правильный ответ — 1 очко.",
-email1Label:"Email игрока 1",email2Label:"Email игрока 2",emailNote:"Email здесь только для заполнения — он не отправляется и не подключает игроков удалённо.",rematchAsk:"Хочешь реванш?",rematchAccept:"Принять реванш",rematchRequested:"Запрос на реванш отправлен. Второй игрок должен принять его.",rematchDeclined:"Реванш отклонён.",rematchBoth:"Оба игрока могут сыграть ещё раз.",readyDuel:"Готовы к дуэли?",enterNames:"Введите имена игроков. Вы будете отвечать по очереди на одни и те же вопросы.",player1:"Игрок 1",player2:"Игрок 2",name1:"Например, Маша",name2:"Например, Петя",startDuel:"Начать дуэль! 🚀",back:"Назад",question:"Вопрос",yourTurn:"Твой ход!",turn:"Ход: ",handoffTitle:"Передай телефон",handoffText:"Не подглядывай в ответы другого игрока!",ready:"Я готов(а)!",online:"Играть онлайн",inviteTitle:"Пригласи друга",inviteText:"Напиши своё имя и email, а ещё имя и email друга. Мы отправим ему приглашение со ссылкой, и вы сыграете одновременно, каждый со своего устройства.",yourName:"Твоё имя",yourEmail:"Твой email",friendName:"Имя друга",friendEmail:"Email друга",sendInvite:"Отправить приглашение ✉️",sending:"Отправляем…",errName:"Имена: только буквы и цифры, до 20 символов.",errEmail:"Проверь email-адреса.",errSame:"У тебя и у друга должны быть разные email.",errRate:"Слишком много приглашений. Попробуй позже.",errSend:"Не получилось отправить письмо. Попробуй ещё раз.",errNet:"Нет связи с сервером. Проверь интернет.",waitFriendTitle:"Ждём соперника: {name}",bothHere:"Все в сборе! 🎉",waitFriendText:"Приглашение отправлено на {email}. Когда друг откроет ссылку из письма, нажмите оба «Я готов(а)!».",rejoinText:"Когда оба будете в игре, нажмите «Я готов(а)!».",challengeTitle:"{name} вызывает тебя на дуэль! ⚔️",challengeText:"Вы отвечаете на одни и те же вопросы одновременно. На ответ — {sec} секунд. Кто знает Alex лучше?",statusOnline:"🟢 {name} в игре",statusOffline:"⏳ {name} ещё не подключился(-ась)",statusReady:"✅ {name} готов(а)!",shareLabel:"Ссылка для друга (можно отправить и в мессенджер):",copy:"Скопировать",copied:"Скопировано!",waitReady:"Ждём соперника…",answerSent:"Ответ принят! Ждём {name}…",oppAnswered:"{name} уже ответил(а)! Скорее! ⏱",onlineTurn:"🌐 Онлайн",connecting:"Подключаемся…",roomGone:"Комната не найдена или ссылка устарела (она действует 24 часа).",reconnecting:"Связь потеряна, переподключаемся…",rematchOnline:"Реванш 🔄",rematchWait:"Ждём, когда {name} согласится на реванш…",rematchOffer:"{name} хочет реванш! Нажми «Реванш».",correctAnswer:"Правильный ответ: ",noAnswer:"не успел(а)",timeUp:"⏰ Время вышло! Правильный ответ: ",timeUpTitle:"⏰ Время вышло!",timerNote:"⏱ На каждый ответ: 10 секунд на уровне 1 и 7 секунд на уровне 2.",saved:"Ответ сохранён!",pass2:"Передай телефон игроку 2. Его ответ будет засчитан независимо — предыдущий выбор скрыт.",start2:"Игрок 2, начать ➜",correct:"🎉 Правильно! +1 очко!",wrong:"😅 Не угадал! Правильный ответ: ",next:"Следующий вопрос ➜",result:"Узнать результат 🏆",changePlayer:"Смена игрока",passPhone:"Передай телефон",player1Turn:"Теперь ход игрока 1",pass1:"Передай телефон первому игроку. Не обсуждайте правильный ответ до того, как оба ответят.",start1:"Игрок 1, начать ➜",resultTitle:"Твой результат!",duelDone:"Дуэль окончена!",winner:"🏆 Победил(а) ",draw:"🤝 Ничья!",drawMsg:"Оба игрока на высоте! Сыграйте ещё раз, чтобы определить победителя.",duelMsg:"Отличная битва! Кто лучше знает Alex? Реванш? 😎",again:"Играть снова 🔄",home:"На главную",footer:"QuizBattle • Проверь дружбу! 💜",
+email1Label:"Email игрока 1",email2Label:"Email игрока 2",emailNote:"Email здесь только для заполнения — он не отправляется и не подключает игроков удалённо.",rematchAsk:"Хочешь реванш?",rematchAccept:"Принять реванш",rematchRequested:"Запрос на реванш отправлен. Второй игрок должен принять его.",rematchDeclined:"Реванш отклонён.",rematchBoth:"Оба игрока могут сыграть ещё раз.",readyDuel:"Готовы к дуэли?",enterNames:"Введите имена игроков. Вы будете отвечать по очереди на одни и те же вопросы.",player1:"Игрок 1",player2:"Игрок 2",name1:"Например, Маша",name2:"Например, Петя",startDuel:"Начать дуэль! 🚀",back:"Назад",question:"Вопрос",yourTurn:"Твой ход!",turn:"Ход: ",handoffTitle:"Передай телефон",handoffText:"Не подглядывай в ответы другого игрока!",ready:"Я готов(а)!",online:"Дуэль онлайн: кто кого лучше знает?",inviteTitle:"Вызови друга на дуэль",inviteText:"Придумай 5 вопросов о себе и отметь правильные ответы. Друг получит приглашение на email, придумает 5 вопросов о себе, и вы попробуете угадать ответы друг друга.",yourName:"Твоё имя",yourEmail:"Твой email",friendName:"Имя друга",friendEmail:"Email друга",timeLabel:"Время на ответ:",sec10:"⏱ 10 секунд",sec7:"⚡ 7 секунд",hostQTitle:"Твои 5 вопросов о себе",qHint:"Напиши вопрос и 4 варианта ответа. Кружком отметь правильный.",questionN:"Вопрос {n}",questionPh:"Например: Какое моё любимое блюдо?",answerPh:"Вариант {n}",sendInvite:"Отправить вызов ✉️",sending:"Отправляем…",errName:"Имена: только буквы и цифры, до 20 символов.",errEmail:"Проверь email-адреса.",errSame:"У тебя и у друга должны быть разные email.",errRate:"Слишком много приглашений. Попробуй позже.",errSend:"Не получилось отправить письмо. Попробуй ещё раз.",errNet:"Нет связи с сервером. Проверь интернет.",errQuestions:"Заполни все 5 вопросов и все 4 варианта ответа.",errCorrect:"Отметь правильный ответ в каждом вопросе.",composeTitle:"{name} вызывает тебя на дуэль! ⚔️",composeText:"{name} уже придумал(а) 5 вопросов о себе. Теперь твоя очередь: придумай 5 вопросов о себе, их будет угадывать {name}. А ты угадываешь ответы на вопросы соперника. На ответ — {sec} секунд.",sendQuestions:"Готово, мои вопросы ✅",waitFriendTitle:"Вызов отправлен! ✉️",waitFriendText:"Письмо ушло на {email}. Когда {name} придумает свои вопросы, можно начинать. Страницу можно закрыть: дуэль сохранится, вернуться можно с главной.",lobbyTitle:"Твой соперник: {name}",readyText:"Вопросы готовы у обоих! Жми «Начать», когда будешь готов(а). У каждого свой таймер, так что играть можно и не одновременно.",waitQuestionsText:"Ждём, когда {name} придумает свои вопросы. Страницу можно закрыть: вернуться можно с главной.",statusWriting:"✍️ {name} придумывает вопросы…",statusReadyQ:"✅ {name}: вопросы готовы",statusPlaying:"🎮 {name} отвечает: вопрос {n} из {total}",statusDone:"🏁 {name} закончил(а): {score} из {total}",startOnline:"Начать дуэль! 🚀",shareLabel:"Ссылка для друга (можно отправить и в мессенджер):",copy:"Скопировать",copied:"Скопировано!",questionsFrom:"❓ Спрашивает {name}",oppProgress:"{name}: вопрос {n} из {total} · очков: {score}",oppIdle:"{name} ещё не начал(а)",oppDone:"{name} уже закончил(а): {score} из {total}",myDoneTitle:"Ты ответил(а) на все вопросы! 🎉",myDoneText:"Твой счёт: {score} из {total}. Ждём, когда {name} закончит. Результат появится здесь, страницу можно закрыть.",connecting:"Подключаемся…",roomGone:"Дуэль не найдена или ссылка устарела (она действует 7 дней).",reconnecting:"Связь потеряна, переподключаемся…",reviewMine:"Как {name} ответил(а) на твои вопросы",reviewTheirs:"Вопросы, которые задал(а) {name}",reviewRight:"правильно: {a}",noAnswerShort:"⏰ не успел(а)",newDuel:"Новая дуэль ⚔️",myDuels:"Мои онлайн-дуэли:",resumeDuel:"⚔️ Соперник: {name}",timeUp:"⏰ Время вышло! Правильный ответ: ",timeUpTitle:"⏰ Время вышло!",timerNote:"⏱ На каждый ответ: 10 секунд на уровне 1 и 7 секунд на уровне 2.",saved:"Ответ сохранён!",pass2:"Передай телефон игроку 2. Его ответ будет засчитан независимо — предыдущий выбор скрыт.",start2:"Игрок 2, начать ➜",correct:"🎉 Правильно! +1 очко!",wrong:"😅 Не угадал! Правильный ответ: ",next:"Следующий вопрос ➜",result:"Узнать результат 🏆",changePlayer:"Смена игрока",passPhone:"Передай телефон",player1Turn:"Теперь ход игрока 1",pass1:"Передай телефон первому игроку. Не обсуждайте правильный ответ до того, как оба ответят.",start1:"Игрок 1, начать ➜",resultTitle:"Твой результат!",duelDone:"Дуэль окончена!",winner:"🏆 Победил(а) ",draw:"🤝 Ничья!",drawMsg:"Оба игрока на высоте! Сыграйте ещё раз, чтобы определить победителя.",duelMsg:"Отличная битва! Кто лучше знает Alex? Реванш? 😎",again:"Играть снова 🔄",home:"На главную",footer:"QuizBattle • Проверь дружбу! 💜",
 solo:[ "🤣 Кажется, нам нужно познакомиться заново! Попробуй ещё раз!","🙈 Пока знаешь меня не очень хорошо. Время узнать друг друга получше!","😂 Есть над чем поработать! Пора больше общаться!","😎 Хороший результат! Но у меня ещё остались секреты!","🔥 Очень круто! Ты знаешь меня почти идеально!","🌟 НЕВЕРОЯТНО! Ты знаешь меня на все 100%! Настоящий эксперт дружбы!" ]
 },
 en: {
 score:"⭐ Score: ",title:"How well do you know me?",intro:"Find out how well you know Alex! Answer the questions, earn points, and win.",
 chooseLevel:"Choose a level:",level1:"⭐ Level 1",level2:"🚀 Level 2",level2Locked:"🔒 Level 2",levelDesc:"5 questions about me",unlockDesc:"Complete Level 1 to unlock Level 2",unlockedDesc:"Level 1 completed! Level 2 is now unlocked",level2Desc:"4 new questions about my car, city, and building",onePlayer:"Single player",duel:"Two-player duel",pointRule:"Earn 1 point for every correct answer.",
-email1Label:"Player 1 email",email2Label:"Player 2 email",emailNote:"These email fields are for display only. They do not send emails or connect remote players.",rematchAsk:"Want a rematch?",rematchAccept:"Accept rematch",rematchRequested:"Rematch request sent. The other player must accept it.",rematchDeclined:"Rematch declined.",rematchBoth:"Both players can play again.",readyDuel:"Ready for a duel?",enterNames:"Enter player names. You will take turns answering the same questions.",player1:"Player 1",player2:"Player 2",name1:"For example, Alex",name2:"For example, Sam",startDuel:"Start duel! 🚀",back:"Back",question:"Question",yourTurn:"Your turn!",turn:"Turn: ",handoffTitle:"Pass the phone",handoffText:"Don't peek at the other player's answers!",ready:"I'm ready!",online:"Play online",inviteTitle:"Invite a friend",inviteText:"Enter your name and email, plus your friend's name and email. We'll send them an invitation link, and you'll play at the same time, each on your own device.",yourName:"Your name",yourEmail:"Your email",friendName:"Friend's name",friendEmail:"Friend's email",sendInvite:"Send invitation ✉️",sending:"Sending…",errName:"Names: letters and numbers only, up to 20 characters.",errEmail:"Please check the email addresses.",errSame:"You and your friend need different emails.",errRate:"Too many invitations. Please try again later.",errSend:"Couldn't send the email. Please try again.",errNet:"Can't reach the server. Check your internet connection.",waitFriendTitle:"Waiting for {name}…",bothHere:"Everyone's here! 🎉",waitFriendText:"Invitation sent to {email}. Once your friend opens the link, both of you press “I'm ready!”.",rejoinText:"When you're both here, press “I'm ready!”.",challengeTitle:"{name} challenges you to a duel! ⚔️",challengeText:"You both answer the same questions at the same time. {sec} seconds per answer. Who knows Alex better?",statusOnline:"🟢 {name} is here",statusOffline:"⏳ {name} hasn't joined yet",statusReady:"✅ {name} is ready!",shareLabel:"Link for your friend (you can also send it in a messenger):",copy:"Copy",copied:"Copied!",waitReady:"Waiting for your opponent…",answerSent:"Answer locked in! Waiting for {name}…",oppAnswered:"{name} has already answered! Hurry! ⏱",onlineTurn:"🌐 Online",connecting:"Connecting…",roomGone:"Room not found or the link has expired (it's valid for 24 hours).",reconnecting:"Connection lost, reconnecting…",rematchOnline:"Rematch 🔄",rematchWait:"Waiting for {name} to accept the rematch…",rematchOffer:"{name} wants a rematch! Press “Rematch”.",correctAnswer:"Correct answer: ",noAnswer:"ran out of time",timeUp:"⏰ Time's up! Correct answer: ",timeUpTitle:"⏰ Time's up!",timerNote:"⏱ You have 10 seconds per answer on Level 1 and 7 seconds on Level 2.",saved:"Answer saved!",pass2:"Pass the phone to Player 2. Their answer is scored separately—the first player's choice is hidden.",start2:"Player 2, start ➜",correct:"🎉 Correct! +1 point!",wrong:"😅 Not quite! Correct answer: ",next:"Next question ➜",result:"See results 🏆",changePlayer:"Switch player",passPhone:"Pass the phone",player1Turn:"Player 1's turn",pass1:"Pass the phone to Player 1. Don't discuss the correct answer until both have answered.",start1:"Player 1, start ➜",resultTitle:"Your result!",duelDone:"Duel finished!",winner:"🏆 Winner: ",draw:"🤝 It's a tie!",drawMsg:"Both players did great! Play again to decide the winner.",duelMsg:"Great battle! Who knows Alex better? Rematch? 😎",again:"Play again 🔄",home:"Home",footer:"QuizBattle • Test your friendship! 💜",
+email1Label:"Player 1 email",email2Label:"Player 2 email",emailNote:"These email fields are for display only. They do not send emails or connect remote players.",rematchAsk:"Want a rematch?",rematchAccept:"Accept rematch",rematchRequested:"Rematch request sent. The other player must accept it.",rematchDeclined:"Rematch declined.",rematchBoth:"Both players can play again.",readyDuel:"Ready for a duel?",enterNames:"Enter player names. You will take turns answering the same questions.",player1:"Player 1",player2:"Player 2",name1:"For example, Alex",name2:"For example, Sam",startDuel:"Start duel! 🚀",back:"Back",question:"Question",yourTurn:"Your turn!",turn:"Turn: ",handoffTitle:"Pass the phone",handoffText:"Don't peek at the other player's answers!",ready:"I'm ready!",online:"Online duel: who knows whom better?",inviteTitle:"Challenge a friend",inviteText:"Write 5 questions about yourself and mark the right answers. Your friend gets an email invitation, writes 5 questions about themselves, and you both try to guess each other's answers.",yourName:"Your name",yourEmail:"Your email",friendName:"Friend's name",friendEmail:"Friend's email",timeLabel:"Time per answer:",sec10:"⏱ 10 seconds",sec7:"⚡ 7 seconds",hostQTitle:"Your 5 questions about yourself",qHint:"Write a question and 4 options. Mark the right one with the circle.",questionN:"Question {n}",questionPh:"For example: What's my favourite food?",answerPh:"Option {n}",sendInvite:"Send the challenge ✉️",sending:"Sending…",errName:"Names: letters and numbers only, up to 20 characters.",errEmail:"Please check the email addresses.",errSame:"You and your friend need different emails.",errRate:"Too many invitations. Please try again later.",errSend:"Couldn't send the email. Please try again.",errNet:"Can't reach the server. Check your internet connection.",errQuestions:"Fill in all 5 questions and all 4 options.",errCorrect:"Mark the right answer in every question.",composeTitle:"{name} challenges you to a duel! ⚔️",composeText:"{name} has written 5 questions about themselves. Now it's your turn: write 5 questions about yourself for {name}. Then each of you will try to guess the other's answers. {sec} seconds per answer.",sendQuestions:"Done, here are my questions ✅",waitFriendTitle:"Challenge sent! ✉️",waitFriendText:"The email went to {email}. Once {name} writes their questions, you can start. You can close this page: the duel is saved, come back from the home screen.",lobbyTitle:"Duel with {name}",readyText:"Both question sets are ready! Press “Start” when you are. Each of you has your own timer, so you don't have to play at the same time.",waitQuestionsText:"Waiting for {name} to write their questions. You can close this page and come back from the home screen.",statusWriting:"✍️ {name} is writing questions…",statusReadyQ:"✅ {name}: questions ready",statusPlaying:"🎮 {name} is answering: question {n} of {total}",statusDone:"🏁 {name} finished: {score} of {total}",startOnline:"Start the duel! 🚀",shareLabel:"Link for your friend (you can also send it in a messenger):",copy:"Copy",copied:"Copied!",questionsFrom:"❓ {name} asks",oppProgress:"{name}: question {n} of {total} · points: {score}",oppIdle:"{name} hasn't started yet",oppDone:"{name} has finished: {score} of {total}",myDoneTitle:"You answered all the questions! 🎉",myDoneText:"Your score: {score} of {total}. Waiting for {name} to finish. The result will appear here, you can close the page.",connecting:"Connecting…",roomGone:"Duel not found or the link has expired (it's valid for 7 days).",reconnecting:"Connection lost, reconnecting…",reviewMine:"How {name} answered your questions",reviewTheirs:"Questions from {name}",reviewRight:"correct: {a}",noAnswerShort:"⏰ ran out of time",newDuel:"New duel ⚔️",myDuels:"My online duels:",resumeDuel:"⚔️ Duel with {name}",timeUp:"⏰ Time's up! Correct answer: ",timeUpTitle:"⏰ Time's up!",timerNote:"⏱ You have 10 seconds per answer on Level 1 and 7 seconds on Level 2.",saved:"Answer saved!",pass2:"Pass the phone to Player 2. Their answer is scored separately—the first player's choice is hidden.",start2:"Player 2, start ➜",correct:"🎉 Correct! +1 point!",wrong:"😅 Not quite! Correct answer: ",next:"Next question ➜",result:"See results 🏆",changePlayer:"Switch player",passPhone:"Pass the phone",player1Turn:"Player 1's turn",pass1:"Pass the phone to Player 1. Don't discuss the correct answer until both have answered.",start1:"Player 1, start ➜",resultTitle:"Your result!",duelDone:"Duel finished!",winner:"🏆 Winner: ",draw:"🤝 It's a tie!",drawMsg:"Both players did great! Play again to decide the winner.",duelMsg:"Great battle! Who knows Alex better? Rematch? 😎",again:"Play again 🔄",home:"Home",footer:"QuizBattle • Test your friendship! 💜",
 solo:["🤣 Looks like we need to get to know each other again! Try once more!","🙈 You don't know me very well yet. Time to learn more about each other!","😂 There's room to improve! Time to hang out more!","😎 Nice score! But I still have some secrets!","🔥 Awesome! You know me almost perfectly!","🌟 INCREDIBLE! You know me 100%—a true friendship expert!"]
 },
 pt: {
 score:"⭐ Pontos: ",title:"Quão bem me conheces?",intro:"Descobre quão bem conheces o Alex! Responde às perguntas, ganha pontos e vence.",
 chooseLevel:"Escolhe um nível:",level1:"⭐ Nível 1",level2:"🚀 Nível 2",level2Locked:"🔒 Nível 2",levelDesc:"5 perguntas sobre mim",unlockDesc:"Conclui o Nível 1 para desbloquear o Nível 2",unlockedDesc:"Nível 1 concluído! O Nível 2 está desbloqueado",level2Desc:"4 novas perguntas sobre o meu carro, cidade e prédio",onePlayer:"Um jogador",duel:"Duelo a dois",pointRule:"Ganha 1 ponto por cada resposta correta.",
-readyDuel:"Prontos para o duelo?",enterNames:"Introduzam os nomes. Vão responder à vez às mesmas perguntas.",player1:"Jogador 1",player2:"Jogador 2",name1:"Por exemplo, Alex",name2:"Por exemplo, Sam",startDuel:"Começar duelo! 🚀",back:"Voltar",question:"Pergunta",yourTurn:"A tua vez!",turn:"Vez de: ",handoffTitle:"Passa o telemóvel",handoffText:"Não espreites as respostas do outro jogador!",ready:"Estou pronto(a)!",online:"Jogar online",inviteTitle:"Convida um amigo",inviteText:"Escreve o teu nome e email e o nome e email do teu amigo. Enviamos-lhe um convite com o link e jogam ao mesmo tempo, cada um no seu dispositivo.",yourName:"O teu nome",yourEmail:"O teu email",friendName:"Nome do amigo",friendEmail:"Email do amigo",sendInvite:"Enviar convite ✉️",sending:"A enviar…",errName:"Nomes: só letras e números, até 20 caracteres.",errEmail:"Verifica os emails.",errSame:"Tu e o teu amigo precisam de emails diferentes.",errRate:"Demasiados convites. Tenta mais tarde.",errSend:"Não foi possível enviar o email. Tenta outra vez.",errNet:"Sem ligação ao servidor. Verifica a internet.",waitFriendTitle:"À espera de {name}…",bothHere:"Estão todos! 🎉",waitFriendText:"Convite enviado para {email}. Quando o teu amigo abrir o link, carreguem os dois em «Estou pronto(a)!».",rejoinText:"Quando estiverem os dois, carreguem em «Estou pronto(a)!».",challengeTitle:"{name} desafia-te para um duelo! ⚔️",challengeText:"Respondem às mesmas perguntas ao mesmo tempo. {sec} segundos por resposta. Quem conhece melhor o Alex?",statusOnline:"🟢 {name} está aqui",statusOffline:"⏳ {name} ainda não entrou",statusReady:"✅ {name} está pronto(a)!",shareLabel:"Link para o teu amigo (também podes enviar por mensagem):",copy:"Copiar",copied:"Copiado!",waitReady:"À espera do adversário…",answerSent:"Resposta registada! À espera de {name}…",oppAnswered:"{name} já respondeu! Depressa! ⏱",onlineTurn:"🌐 Online",connecting:"A ligar…",roomGone:"Sala não encontrada ou o link expirou (é válido durante 24 horas).",reconnecting:"Ligação perdida, a voltar a ligar…",rematchOnline:"Desforra 🔄",rematchWait:"À espera que {name} aceite a desforra…",rematchOffer:"{name} quer a desforra! Carrega em «Desforra».",correctAnswer:"Resposta correta: ",noAnswer:"não respondeu a tempo",timeUp:"⏰ Acabou o tempo! Resposta correta: ",timeUpTitle:"⏰ Acabou o tempo!",timerNote:"⏱ Tens 10 segundos por resposta no Nível 1 e 7 segundos no Nível 2.",saved:"Resposta guardada!",pass2:"Passa o telemóvel ao Jogador 2. A resposta será contabilizada separadamente; a escolha do primeiro jogador fica escondida.",start2:"Jogador 2, começar ➜",correct:"🎉 Correto! +1 ponto!",wrong:"😅 Não foi desta! Resposta correta: ",next:"Próxima pergunta ➜",result:"Ver resultado 🏆",changePlayer:"Troca de jogador",passPhone:"Passa o telemóvel",player1Turn:"Agora é a vez do Jogador 1",pass1:"Passa o telemóvel ao Jogador 1. Não falem da resposta correta até ambos responderem.",start1:"Jogador 1, começar ➜",resultTitle:"O teu resultado!",duelDone:"Duelo terminado!",winner:"🏆 Venceu: ",draw:"🤝 Empate!",drawMsg:"Os dois jogaram muito bem! Joguem novamente para decidir o vencedor.",duelMsg:"Grande duelo! Quem conhece melhor o Alex? Desforra? 😎",again:"Jogar novamente 🔄",home:"Início",footer:"QuizBattle • Testa a amizade! 💜",
+readyDuel:"Prontos para o duelo?",enterNames:"Introduzam os nomes. Vão responder à vez às mesmas perguntas.",player1:"Jogador 1",player2:"Jogador 2",name1:"Por exemplo, Alex",name2:"Por exemplo, Sam",startDuel:"Começar duelo! 🚀",back:"Voltar",question:"Pergunta",yourTurn:"A tua vez!",turn:"Vez de: ",handoffTitle:"Passa o telemóvel",handoffText:"Não espreites as respostas do outro jogador!",ready:"Estou pronto(a)!",online:"Duelo online: quem conhece melhor quem?",inviteTitle:"Desafia um amigo",inviteText:"Escreve 5 perguntas sobre ti e marca as respostas certas. O teu amigo recebe um convite por email, escreve 5 perguntas sobre si e vocês tentam adivinhar as respostas um do outro.",yourName:"O teu nome",yourEmail:"O teu email",friendName:"Nome do amigo",friendEmail:"Email do amigo",timeLabel:"Tempo por resposta:",sec10:"⏱ 10 segundos",sec7:"⚡ 7 segundos",hostQTitle:"As tuas 5 perguntas sobre ti",qHint:"Escreve uma pergunta e 4 opções. Marca a certa com o círculo.",questionN:"Pergunta {n}",questionPh:"Por exemplo: Qual é a minha comida favorita?",answerPh:"Opção {n}",sendInvite:"Enviar o desafio ✉️",sending:"A enviar…",errName:"Nomes: só letras e números, até 20 caracteres.",errEmail:"Verifica os emails.",errSame:"Tu e o teu amigo precisam de emails diferentes.",errRate:"Demasiados convites. Tenta mais tarde.",errSend:"Não foi possível enviar o email. Tenta outra vez.",errNet:"Sem ligação ao servidor. Verifica a internet.",errQuestions:"Preenche as 5 perguntas e as 4 opções.",errCorrect:"Marca a resposta certa em cada pergunta.",composeTitle:"{name} desafia-te para um duelo! ⚔️",composeText:"{name} já escreveu 5 perguntas sobre si. Agora é a tua vez: escreve 5 perguntas sobre ti para {name}. Depois cada um tenta adivinhar as respostas do outro. {sec} segundos por resposta.",sendQuestions:"Pronto, as minhas perguntas ✅",waitFriendTitle:"Desafio enviado! ✉️",waitFriendText:"O email foi para {email}. Quando {name} escrever as perguntas, podem começar. Podes fechar a página: o duelo fica guardado, volta a partir do início.",lobbyTitle:"Duelo com {name}",readyText:"As perguntas dos dois estão prontas! Carrega em «Começar» quando quiseres. Cada um tem o seu temporizador, por isso não precisam de jogar ao mesmo tempo.",waitQuestionsText:"À espera que {name} escreva as perguntas. Podes fechar a página e voltar a partir do início.",statusWriting:"✍️ {name} está a escrever perguntas…",statusReadyQ:"✅ {name}: perguntas prontas",statusPlaying:"🎮 {name} está a responder: pergunta {n} de {total}",statusDone:"🏁 {name} terminou: {score} de {total}",startOnline:"Começar o duelo! 🚀",shareLabel:"Link para o teu amigo (também podes enviar por mensagem):",copy:"Copiar",copied:"Copiado!",questionsFrom:"❓ Perguntas de {name}",oppProgress:"{name}: pergunta {n} de {total} · pontos: {score}",oppIdle:"{name} ainda não começou",oppDone:"{name} já terminou: {score} de {total}",myDoneTitle:"Respondeste a todas as perguntas! 🎉",myDoneText:"A tua pontuação: {score} de {total}. À espera que {name} termine. O resultado aparece aqui, podes fechar a página.",connecting:"A ligar…",roomGone:"Duelo não encontrado ou o link expirou (é válido durante 7 dias).",reconnecting:"Ligação perdida, a voltar a ligar…",reviewMine:"Como {name} respondeu às tuas perguntas",reviewTheirs:"As tuas respostas às perguntas de {name}",reviewRight:"certa: {a}",noAnswerShort:"⏰ sem tempo",newDuel:"Novo duelo ⚔️",myDuels:"Os meus duelos online:",resumeDuel:"⚔️ Duelo com {name}",timeUp:"⏰ Acabou o tempo! Resposta correta: ",timeUpTitle:"⏰ Acabou o tempo!",timerNote:"⏱ Tens 10 segundos por resposta no Nível 1 e 7 segundos no Nível 2.",saved:"Resposta guardada!",pass2:"Passa o telemóvel ao Jogador 2. A resposta será contabilizada separadamente; a escolha do primeiro jogador fica escondida.",start2:"Jogador 2, começar ➜",correct:"🎉 Correto! +1 ponto!",wrong:"😅 Não foi desta! Resposta correta: ",next:"Próxima pergunta ➜",result:"Ver resultado 🏆",changePlayer:"Troca de jogador",passPhone:"Passa o telemóvel",player1Turn:"Agora é a vez do Jogador 1",pass1:"Passa o telemóvel ao Jogador 1. Não falem da resposta correta até ambos responderem.",start1:"Jogador 1, começar ➜",resultTitle:"O teu resultado!",duelDone:"Duelo terminado!",winner:"🏆 Venceu: ",draw:"🤝 Empate!",drawMsg:"Os dois jogaram muito bem! Joguem novamente para decidir o vencedor.",duelMsg:"Grande duelo! Quem conhece melhor o Alex? Desforra? 😎",again:"Jogar novamente 🔄",home:"Início",footer:"QuizBattle • Testa a amizade! 💜",
 solo:["🤣 Parece que precisamos de nos conhecer de novo! Tenta outra vez!","🙈 Ainda não me conheces muito bem. Está na hora de nos conhecermos melhor!","😂 Ainda podes melhorar! Está na hora de conviver mais!","😎 Bom resultado! Mas ainda tenho alguns segredos!","🔥 Excelente! Quase me conheces na perfeição!","🌟 INCRÍVEL! Conheces-me a 100%! Um verdadeiro especialista em amizade!"]
 }
 };
-const $=id=>document.getElementById(id),screens=["home","setup","invite","lobby","game","result"],lettersByLang={ru:["А","Б","В","Г"],en:["A","B","C","D"],pt:["A","B","C","D"]};
+const $=id=>document.getElementById(id),screens=["home","setup","invite","compose","lobby","game","result"],lettersByLang={ru:["А","Б","В","Г"],en:["A","B","C","D"],pt:["A","B","C","D"]};
 let letters=lettersByLang.ru;
 function tr(key){return translations[language][key]}
 function applyLanguage(){
@@ -129,7 +135,9 @@ function applyLanguage(){
   $("name1").placeholder=t.name1;$("name2").placeholder=t.name2; $("emailLabel1").childNodes[0].textContent=t.email1Label; $("emailLabel2").childNodes[0].textContent=t.email2Label; $("emailNote").textContent=t.emailNote; $("timerNote").textContent=t.timerNote; $("pointRule").textContent=t.pointRule+" "+t.timerNote;
   $("onlineMode").lastChild.textContent=t.online;$("inviteTitle").textContent=t.inviteTitle;$("inviteText").textContent=t.inviteText;
   [["hostNameLabel","yourName"],["hostEmailLabel","yourEmail"],["friendNameLabel","friendName"],["friendEmailLabel","friendEmail"]].forEach(([id,k])=>$(id).childNodes[0].textContent=t[k]);
-  $("sendInvite").textContent=t.sendInvite;$("inviteBack").textContent=t.back;$("lobbyHome").textContent=t.home;$("shareLabel").textContent=t.shareLabel;$("copyLink").textContent=t.copy;
+  $("timeLabel").textContent=t.timeLabel;$("time10").textContent=t.sec10;$("time7").textContent=t.sec7;$("hostQTitle").textContent=t.hostQTitle;$("hostQHint").textContent=t.qHint;$("guestQHint").textContent=t.qHint;
+  $("sendInvite").textContent=t.sendInvite;$("inviteBack").textContent=t.back;$("sendQuestions").textContent=t.sendQuestions;$("lobbyStart").textContent=t.startOnline;$("lobbyHome").textContent=t.home;$("shareLabel").textContent=t.shareLabel;$("copyLink").textContent=t.copy;
+  labelEditor($("hostEditor"));labelEditor($("guestEditor"));renderMyDuels();
   $("startDuel").textContent=t.startDuel;$("backHome").textContent=t.back;
   $("readyButton").textContent=t.ready;$("nextButton").textContent=t.next;
   $("playAgain").textContent=t.again;$("goHome").textContent=t.home;
@@ -251,6 +259,7 @@ $("readyButton").addEventListener("click",()=>{
   }
 });
 $("nextButton").addEventListener("click",()=>{
+  if(mode==="online"){$("nextButton").disabled=true;onlineSend({t:"next"});return;}
   if(!answered)return;
   if(questionIndex===questions.length-1){showResults();return;}
   questionIndex++;
@@ -300,131 +309,244 @@ function showResults(){
     }
     rematch.append(status,controls);$("resultContent").append(rematch);
   }updateHeader()}
-$("playAgain").addEventListener("click",()=>{if(mode==="online"){onlineSend({t:"rematch"});return;}questions=language==="ru"?(currentLevel===1?level1Questions:level2Questions):translatedQuestions[language][currentLevel];resetGame();if(mode==="duel")showScreen("setup");else startGame()});
+$("playAgain").addEventListener("click",()=>{if(mode==="online"){newDuelFrom(online.state);return;}questions=language==="ru"?(currentLevel===1?level1Questions:level2Questions):translatedQuestions[language][currentLevel];resetGame();if(mode==="duel")showScreen("setup");else startGame()});
 $("goHome").addEventListener("click",()=>{if(mode==="online")leaveOnline();resetGame();updateLevelPicker();showScreen("home")});
-// ---- Online duel: invite by e-mail, then both players play in real time via the QuizBattle Worker.
+// ---- Online duel "who knows whom better": each player writes 5 questions about themselves,
+// then guesses the opponent's answers. Rooms live in the QuizBattle Worker (server/).
 const API_BASE=(location.hostname==="localhost"||location.hostname==="127.0.0.1")?"http://localhost:8787":"https://quizbattle.sergey-64c.workers.dev";
-const fmt=(str,vars)=>str.replace(/\{(\w+)\}/g,(_,k)=>vars[k]??"");
-const online={room:null,token:null,ws:null,state:null,shownQ:null,retries:0,opened:false,closedByUs:false,inviteEmail:""};
-function questionsFor(level){return language==="ru"?(level===1?level1Questions:level2Questions):translatedQuestions[language][level]}
+// Declared as a function (hoisted): applyLanguage() runs before this block.
+function fmt(str,vars){return str.replace(/\{(\w+)\}/g,(_,k)=>vars[k]??"")}
+const online={room:null,token:null,ws:null,state:null,shown:null,retries:0,opened:false,closedByUs:false,inviteEmail:"",timeLimit:10};
+
+// Question editor: 5 cards, each with a question, 4 options and a radio for the correct one.
+// Drafts are kept in localStorage so a half-written set survives a reload.
+function buildEditor(box,draftKey){
+  let draft=[];try{draft=JSON.parse(localStorage.getItem(draftKey)||"[]")}catch(_){}
+  box.innerHTML="";box.dataset.draftKey=draftKey;
+  for(let k=0;k<5;k++){
+    const d=draft[k]||{},card=document.createElement("div");card.className="q-card";
+    const title=document.createElement("div");title.className="q-title";
+    const text=document.createElement("input");text.type="text";text.className="q-text";text.maxLength=120;text.value=d.text||"";
+    card.append(title,text);
+    for(let a=0;a<4;a++){
+      const row=document.createElement("label");row.className="q-row";
+      const radio=document.createElement("input");radio.type="radio";radio.name=box.id+"-c"+k;radio.value=a;radio.checked=d.correct===a;
+      const ans=document.createElement("input");ans.type="text";ans.className="q-ans";ans.maxLength=40;ans.value=(d.answers||[])[a]||"";
+      row.append(radio,ans);card.appendChild(row);
+    }
+    box.appendChild(card);
+  }
+  box.oninput=box.onchange=()=>{try{localStorage.setItem(draftKey,JSON.stringify(readEditor(box)))}catch(_){}};
+  labelEditor(box);
+}
+function labelEditor(box){
+  box.querySelectorAll(".q-card").forEach((card,k)=>{
+    card.querySelector(".q-title").textContent=fmt(tr("questionN"),{n:k+1});
+    card.querySelector(".q-text").placeholder=k===0?tr("questionPh"):"";
+    card.querySelectorAll(".q-ans").forEach((inp,a)=>inp.placeholder=fmt(tr("answerPh"),{n:a+1}));
+  });
+}
+function readEditor(box){
+  return Array.from(box.querySelectorAll(".q-card")).map(card=>{
+    const checked=card.querySelector("input[type=radio]:checked");
+    return{text:card.querySelector(".q-text").value.trim(),answers:Array.from(card.querySelectorAll(".q-ans")).map(i=>i.value.trim()),correct:checked?Number(checked.value):-1};
+  });
+}
+function editorQuestions(box){
+  const qs=readEditor(box);
+  if(qs.some(q=>!q.text||q.answers.some(a=>!a)))return{error:"errQuestions"};
+  if(qs.some(q=>q.correct<0))return{error:"errCorrect"};
+  return{questions:qs};
+}
+function clearDraft(box){try{localStorage.removeItem(box.dataset.draftKey)}catch(_){}}
+
+// Duels this browser takes part in, so they can be resumed from the home screen.
+function loadDuels(){try{return JSON.parse(localStorage.getItem("quizBattleDuels")||"[]").filter(d=>Date.now()-d.ts<7*864e5)}catch(_){return[]}}
+function rememberDuel(room,token,opponent){
+  const list=loadDuels().filter(d=>d.room!==room);list.unshift({room,token,opponent,ts:Date.now()});
+  try{localStorage.setItem("quizBattleDuels",JSON.stringify(list.slice(0,5)))}catch(_){}
+  renderMyDuels();
+}
+function renderMyDuels(){
+  const box=$("myDuels"),list=loadDuels();box.innerHTML="";box.classList.toggle("hidden",!list.length);
+  if(!list.length)return;
+  const p=document.createElement("p");p.className="muted";p.textContent=tr("myDuels");box.appendChild(p);
+  list.forEach(d=>{const b=document.createElement("button");b.className="secondary";b.textContent=fmt(tr("resumeDuel"),{name:d.opponent});
+    b.addEventListener("click",()=>{history.replaceState(null,"","?room="+d.room+"&t="+d.token);startOnline(d.room,d.token)});box.appendChild(b)});
+}
+
+buildEditor($("hostEditor"),"quizBattleDraftHost");
+const pickTime=sec=>{online.timeLimit=sec;$("time10").classList.toggle("active",sec===10);$("time7").classList.toggle("active",sec===7)};
+$("time10").addEventListener("click",()=>pickTime(10));$("time7").addEventListener("click",()=>pickTime(7));
 $("onlineMode").addEventListener("click",()=>{$("inviteError").textContent="";showScreen("invite")});
 $("inviteBack").addEventListener("click",()=>showScreen("home"));
 $("inviteForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const btn=$("sendInvite"),err=$("inviteError");err.textContent="";
-  const body={hostName:$("hostName").value.trim(),hostEmail:$("hostEmail").value.trim(),friendName:$("friendName").value.trim(),friendEmail:$("friendEmail").value.trim(),website:$("website").value,level:currentLevel,lang:language};
+  const body={hostName:$("hostName").value.trim(),hostEmail:$("hostEmail").value.trim(),friendName:$("friendName").value.trim(),friendEmail:$("friendEmail").value.trim(),website:$("website").value,timeLimit:online.timeLimit,lang:language};
   if(!body.hostName||!body.friendName){err.textContent=tr("errName");return}
   if(!$("hostEmail").checkValidity()||!$("friendEmail").checkValidity()||!body.hostEmail||!body.friendEmail){err.textContent=tr("errEmail");return}
+  const ed=editorQuestions($("hostEditor"));if(ed.error){err.textContent=tr(ed.error);return}
+  body.questions=ed.questions;
   btn.disabled=true;btn.textContent=tr("sending");
   try{
     const res=await fetch(API_BASE+"/api/invite",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
     const data=await res.json().catch(()=>({}));
-    if(!res.ok){err.textContent=tr({bad_name:"errName",bad_email:"errEmail",same_email:"errSame",rate_limited:"errRate"}[data.error]||"errSend");return}
-    online.inviteEmail=body.friendEmail;
-    $("shareLink").value=data.link;
+    if(!res.ok){err.textContent=tr({bad_name:"errName",bad_email:"errEmail",same_email:"errSame",rate_limited:"errRate",bad_questions:"errQuestions"}[data.error]||"errSend");return}
+    clearDraft($("hostEditor"));buildEditor($("hostEditor"),"quizBattleDraftHost");
+    online.inviteEmail=body.friendEmail;$("shareLink").value=data.link;
     history.replaceState(null,"","?room="+data.room+"&t="+data.token);
+    rememberDuel(data.room,data.token,body.friendName);
     startOnline(data.room,data.token);
   }catch(_){err.textContent=tr("errNet")}
   finally{btn.disabled=false;btn.textContent=tr("sendInvite")}
+});
+$("sendQuestions").addEventListener("click",()=>{
+  const ed=editorQuestions($("guestEditor"));
+  if(ed.error){$("composeError").textContent=tr(ed.error);return}
+  $("composeError").textContent="";$("sendQuestions").disabled=true;onlineSend({t:"questions",questions:ed.questions});
 });
 $("copyLink").addEventListener("click",async()=>{
   try{await navigator.clipboard.writeText($("shareLink").value)}catch(_){$("shareLink").select();document.execCommand("copy")}
   $("copyLink").textContent=tr("copied");setTimeout(()=>$("copyLink").textContent=tr("copy"),1500);
 });
-$("lobbyReady").addEventListener("click",()=>onlineSend({t:"ready"}));
+$("lobbyStart").addEventListener("click",()=>{$("lobbyStart").disabled=true;onlineSend({t:"start"})});
 $("lobbyHome").addEventListener("click",()=>{leaveOnline();resetGame();updateLevelPicker();showScreen("home")});
 
 function startOnline(room,token){
-  resetGame();mode="online";online.room=room;online.token=token;online.state=null;online.shownQ=null;online.retries=0;online.opened=false;online.closedByUs=false;
-  showScreen("lobby");$("lobbyTitle").textContent=tr("connecting");$("lobbyText").textContent="";$("lobbyPlayers").innerHTML="";$("lobbyReady").disabled=true;
-  $("shareBox").classList.toggle("hidden",!$("shareLink").value);
+  if(online.ws){online.closedByUs=true;online.ws.close()}
+  resetGame();mode="online";Object.assign(online,{room,token,state:null,shown:null,retries:0,opened:false,closedByUs:false});
+  showScreen("lobby");$("lobbyEmoji").textContent="⚔️🌐";$("lobbyTitle").textContent=tr("connecting");$("lobbyText").textContent="";$("lobbyPlayers").innerHTML="";
+  $("lobbyStart").classList.add("hidden");$("shareBox").classList.add("hidden");
   connectOnline();
 }
 function connectOnline(){
   const ws=new WebSocket(API_BASE.replace(/^http/,"ws")+"/api/room/"+online.room+"/ws?t="+online.token);
   online.ws=ws;
   ws.onopen=()=>{online.opened=true;online.retries=0};
-  ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.type==="state"){online.state=m;renderOnline(m)}};
+  ws.onmessage=e=>{const m=JSON.parse(e.data);
+    if(m.type==="state"){online.state=m;renderOnline(m)}
+    else if(m.type==="error"){$("composeError").textContent=tr("errQuestions");$("sendQuestions").disabled=false}};
   ws.onclose=e=>{
     if(online.ws!==ws||online.closedByUs||e.code===4001)return;
     // Never connected after a few attempts = the room does not exist (expired or bad link).
     if(e.code===4000||(!online.opened&&online.retries>=2)){showOnlineError(tr("roomGone"));return}
     online.retries++;online.opened=false;
     if(online.state){$("feedback").textContent=tr("reconnecting");$("feedback").classList.remove("hidden")}
-    setTimeout(()=>{if(!online.closedByUs)connectOnline()},Math.min(1000*online.retries,5000));
+    setTimeout(()=>{if(!online.closedByUs&&online.ws===ws)connectOnline()},Math.min(1000*online.retries,5000));
   };
 }
 function onlineSend(msg){if(online.ws&&online.ws.readyState===1)online.ws.send(JSON.stringify(msg))}
-function leaveOnline(){online.closedByUs=true;if(online.ws)online.ws.close();online.ws=null;online.state=null;$("shareLink").value="";history.replaceState(null,"",location.pathname);mode="normal";stopTimer()}
-function showOnlineError(text){stopTimer();showScreen("lobby");$("lobbyTitle").textContent="😕";$("lobbyText").textContent=text;$("lobbyPlayers").innerHTML="";$("shareBox").classList.add("hidden");$("lobbyReady").classList.add("hidden")}
+function leaveOnline(){online.closedByUs=true;if(online.ws)online.ws.close();online.ws=null;online.state=null;$("shareLink").value="";history.replaceState(null,"",location.pathname);mode="normal";stopTimer();$("nextButton").textContent=tr("next");$("nextButton").disabled=false}
+function showOnlineError(text){
+  stopTimer();showScreen("lobby");$("lobbyEmoji").textContent="😕";$("lobbyTitle").textContent=text;$("lobbyText").textContent="";$("lobbyPlayers").innerHTML="";$("shareBox").classList.add("hidden");$("lobbyStart").classList.add("hidden");
+  try{localStorage.setItem("quizBattleDuels",JSON.stringify(loadDuels().filter(d=>d.room!==online.room)))}catch(_){}
+}
 function lockOnlineAnswers(){Array.from($("answers").children).forEach(b=>b.disabled=true)}
+function statusLine(st,i){
+  const name=st.names[i],p=i===st.you?st.me:st.opp,dot=st.connected[i]?"🟢 ":"⚪ ";
+  if(!st.submitted[i])return dot+fmt(tr("statusWriting"),{name});
+  if(p.phase==="done")return dot+fmt(tr("statusDone"),{name,score:p.score,total:st.total});
+  if(p.phase!=="idle")return dot+fmt(tr("statusPlaying"),{name,n:p.q+1,total:st.total});
+  return dot+fmt(tr("statusReadyQ"),{name});
+}
 
 function renderOnline(st,relabel){
-  const me=st.you,opp=1-me,names=st.names;
-  playerNames=names;scores=st.scores;currentLevel=st.level;questions=questionsFor(st.level);
-  $("headerScore").textContent="⭐ "+st.scores[me]+" : "+st.scores[opp];
-  if(st.phase==="lobby"){
-    stopTimer();showScreen("lobby");$("lobbyReady").classList.remove("hidden");
-    if(me===0){$("lobbyTitle").textContent=st.connected[1]?tr("bothHere"):fmt(tr("waitFriendTitle"),{name:names[1]});$("lobbyText").textContent=online.inviteEmail?fmt(tr("waitFriendText"),{email:online.inviteEmail}):tr("rejoinText")}
-    else{$("lobbyTitle").textContent=fmt(tr("challengeTitle"),{name:names[0]});$("lobbyText").textContent=fmt(tr("challengeText"),{sec:st.limit})}
-    $("lobbyPlayers").innerHTML="";
-    [0,1].forEach(i=>{const d=document.createElement("div");d.textContent=fmt(tr(st.ready[i]?"statusReady":st.connected[i]?"statusOnline":"statusOffline"),{name:names[i]});$("lobbyPlayers").appendChild(d)});
-    $("shareBox").classList.toggle("hidden",me!==0||!$("shareLink").value||st.connected[1]);
-    $("lobbyReady").disabled=st.ready[me]||!st.connected[opp];
-    $("lobbyReady").textContent=st.ready[me]?tr("waitReady"):tr("ready");
+  const me=st.you,opp=1-me,names=st.names,oppName=names[opp];
+  playerNames=names;rememberDuel(online.room,online.token,oppName);
+  $("headerScore").textContent="⭐ "+st.me.score+" : "+st.opp.score;
+
+  if(!st.submitted[me]){ // invited friend: write own questions first
+    stopTimer();showScreen("compose");
+    if(!$("guestEditor").children.length)buildEditor($("guestEditor"),"quizBattleDraft-"+online.room);
+    $("composeTitle").textContent=fmt(tr("composeTitle"),{name:oppName});
+    $("composeText").textContent=fmt(tr("composeText"),{name:oppName,sec:st.limit});
     return;
   }
-  if(st.phase==="done"){stopTimer();showOnlineResults(st);return}
+  if(st.review){stopTimer();showOnlineResults(st);return}
+  if(st.me.phase==="idle"||st.me.phase==="done"){
+    stopTimer();showScreen("lobby");
+    const lines=$("lobbyPlayers");lines.innerHTML="";
+    [me,opp].forEach(i=>{const d=document.createElement("div");d.textContent=statusLine(st,i);lines.appendChild(d)});
+    const both=st.submitted[0]&&st.submitted[1];
+    $("lobbyStart").classList.toggle("hidden",!(both&&st.me.phase==="idle"));$("lobbyStart").disabled=false;
+    $("shareBox").classList.toggle("hidden",me!==0||!$("shareLink").value||st.submitted[1]);
+    if(st.me.phase==="done"){$("lobbyEmoji").textContent="🏁";$("lobbyTitle").textContent=tr("myDoneTitle");$("lobbyText").textContent=fmt(tr("myDoneText"),{score:st.me.score,total:st.total,name:oppName})}
+    else if(both){$("lobbyEmoji").textContent="⚔️🌐";$("lobbyTitle").textContent=fmt(tr("lobbyTitle"),{name:oppName});$("lobbyText").textContent=tr("readyText")}
+    else{$("lobbyEmoji").textContent="✉️";$("lobbyTitle").textContent=online.inviteEmail?tr("waitFriendTitle"):fmt(tr("lobbyTitle"),{name:oppName});
+      $("lobbyText").textContent=online.inviteEmail?fmt(tr("waitFriendText"),{email:online.inviteEmail,name:oppName}):fmt(tr("waitQuestionsText"),{name:oppName})}
+    return;
+  }
+
+  // Answering the opponent's questions.
   showScreen("game");
-  const q=questions[st.q];
-  if(online.shownQ!==st.q||relabel||st.phase!==$("answers").dataset.phase){
-    $("questionCount").textContent=tr("question")+" "+(st.q+1)+" / "+st.total;
-    $("turnLabel").textContent=tr("onlineTurn")+" · "+names[me]+" vs "+names[opp];
-    $("progress").style.width=(st.q/st.total*100)+"%";
+  const p=st.me,q=p.question,key=p.q+":"+p.phase;
+  if(online.shown!==key||relabel){
+    $("questionCount").textContent=tr("question")+" "+(p.q+1)+" / "+st.total;
+    $("turnLabel").textContent=fmt(tr("questionsFrom"),{name:oppName});
+    $("progress").style.width=(p.q/st.total*100)+"%";
     $("questionText").textContent=q.text;$("questionText").classList.remove("hidden");
-    $("answers").classList.remove("hidden");$("handoff").classList.add("hidden");$("nextRow").classList.add("hidden");
-    $("answers").innerHTML="";$("answers").dataset.phase=st.phase;
+    $("answers").classList.remove("hidden");$("handoff").classList.add("hidden");
+    $("answers").innerHTML="";
     q.answers.forEach((answer,index)=>{
       const b=document.createElement("button");b.className="answer";
       const l=document.createElement("span");l.className="letter";l.textContent=letters[index];
       const t=document.createElement("span");t.textContent=answer;b.append(l,t);
-      b.addEventListener("click",()=>{if(b.disabled)return;onlineSend({t:"answer",q:st.q,choice:index});lockOnlineAnswers();b.classList.add("picked")});
+      b.addEventListener("click",()=>{if(b.disabled)return;onlineSend({t:"answer",q:p.q,choice:index});lockOnlineAnswers();b.classList.add("picked");stopTimer()});
       $("answers").appendChild(b);
     });
+    if(p.phase==="question"&&online.shown!==key)startTimer(p.remaining);
+    online.shown=key;
   }
-  const buttons=Array.from($("answers").children);
-  if(st.phase==="question"){
-    if(online.shownQ!==st.q){online.shownQ=st.q;startTimer(st.remaining)}
-    if(st.myPick!==null){lockOnlineAnswers();if(st.myPick>=0)buttons[st.myPick].classList.add("picked");stopTimer()}
-    let msg="";
-    if(st.myPick!==null)msg=fmt(tr("answerSent"),{name:names[opp]});
-    else if(st.answered[opp])msg=fmt(tr("oppAnswered"),{name:names[opp]});
-    $("feedback").textContent=msg;$("feedback").classList.toggle("hidden",!msg);
-  }else if(st.phase==="reveal"){
-    stopTimer();online.shownQ=st.q;
-    const {picks,correct}=st.reveal;
-    buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("picked");if(i===correct)b.classList.add("correct");if(i===picks[me]&&i!==correct)b.classList.add("wrong")});
-    const line=i=>names[i]+": "+(picks[i]===correct?"✅":picks[i]===-1?"⏰ "+tr("noAnswer"):"❌");
-    $("feedback").textContent=line(me)+"   ·   "+line(opp)+"\n"+tr("correctAnswer")+letters[correct]+") "+q.answers[correct];
-    $("feedback").style.whiteSpace="pre-line";$("feedback").classList.remove("hidden");
+  const oppLine=st.opp.phase==="done"?fmt(tr("oppDone"),{name:oppName,score:st.opp.score,total:st.total})
+    :st.opp.phase==="idle"?fmt(tr("oppIdle"),{name:oppName}):fmt(tr("oppProgress"),{name:oppName,n:st.opp.q+1,total:st.total,score:st.opp.score});
+  $("feedback").style.whiteSpace="pre-line";
+  if(p.phase==="question"){
+    $("nextRow").classList.add("hidden");
+    $("feedback").textContent=oppLine;$("feedback").classList.remove("hidden");
+  }else{
+    stopTimer();
+    const buttons=Array.from($("answers").children);
+    buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove("picked");if(i===p.correct)b.classList.add("correct");if(i===p.pick&&i!==p.correct)b.classList.add("wrong")});
+    const right=letters[p.correct]+") "+q.answers[p.correct];
+    $("feedback").textContent=(p.pick===p.correct?tr("correct"):(p.pick===-1?tr("timeUp"):tr("wrong"))+right)+"\n"+oppLine;
+    $("feedback").classList.remove("hidden");
+    $("nextButton").textContent=p.q===st.total-1?tr("result"):tr("next");$("nextButton").disabled=false;
+    $("nextRow").classList.remove("hidden");
   }
 }
 function showOnlineResults(st){
-  const me=st.you,opp=1-me,[a,b]=st.scores;
+  const me=st.you,opp=1-me,a=st.me.score,b=st.opp.score;
   showScreen("result");$("progress").style.width="100%";
   $("resultEmoji").textContent=a===b?"🤝":"🏆";$("resultTitle").textContent=tr("duelDone");
-  const w=document.createElement("div");w.className="winner";w.textContent=a>b?tr("winner")+st.names[0]+"!":b>a?tr("winner")+st.names[1]+"!":tr("draw");
+  const w=document.createElement("div");w.className="winner";w.textContent=a>b?tr("winner")+st.names[me]+"!":b>a?tr("winner")+st.names[opp]+"!":tr("draw");
   const board=document.createElement("div");board.className="scoreboard";
-  st.scores.forEach((s,i)=>{const c=document.createElement("div");c.className="player-result";const n=document.createElement("strong");n.textContent=st.names[i];const p=document.createElement("div");p.className="points";p.textContent=s+" / "+st.total;c.append(n,p);board.appendChild(c)});
-  const m=document.createElement("p");m.className="rematch-status";
-  m.textContent=st.rematch[me]?fmt(tr("rematchWait"),{name:st.names[opp]}):st.rematch[opp]?fmt(tr("rematchOffer"),{name:st.names[opp]}):(a===b?tr("drawMsg"):tr("duelMsg"));
-  $("resultContent").innerHTML="";$("resultContent").append(w,board,m);
-  $("playAgain").textContent=tr("rematchOnline");$("playAgain").disabled=st.rematch[me];
+  [[me,a],[opp,b]].forEach(([i,s])=>{const c=document.createElement("div");c.className="player-result";const n=document.createElement("strong");n.textContent=st.names[i];const pts=document.createElement("div");pts.className="points";pts.textContent=s+" / "+st.total;c.append(n,pts);board.appendChild(c)});
+  const review=document.createElement("div");review.className="review";
+  const section=(title,items)=>{
+    const h=document.createElement("h3");h.textContent=title;const ol=document.createElement("ol");
+    items.forEach(x=>{const li=document.createElement("li"),qb=document.createElement("b");qb.textContent=x.text;
+      const ok=x.pick===x.correct,ans=document.createElement("div");
+      ans.textContent=(x.pick===-1||x.pick==null?tr("noAnswerShort"):(ok?"✅ ":"❌ ")+x.answers[x.pick])+(ok?"":" · "+fmt(tr("reviewRight"),{a:x.answers[x.correct]}));
+      li.append(qb,ans);ol.appendChild(li)});
+    review.append(h,ol);
+  };
+  section(fmt(tr("reviewMine"),{name:st.names[opp]}),st.review.myQuestions);
+  section(fmt(tr("reviewTheirs"),{name:st.names[opp]}),st.review.theirQuestions);
+  $("resultContent").innerHTML="";$("resultContent").append(w,board,review);
+  $("playAgain").textContent=tr("newDuel");$("playAgain").disabled=false;
 }
-// Opened from the invitation e-mail (or a refresh of the host's page): join the room.
+// "New duel": back to the invite form with this player's name filled in.
+function newDuelFrom(st){
+  const myName=st?st.names[st.you]:"";leaveOnline();resetGame();
+  if(myName)$("hostName").value=myName;
+  $("inviteError").textContent="";showScreen("invite");
+}
+// Opened from the invitation e-mail (or a refresh / "my duels"): join the room.
 (()=>{
   const params=new URLSearchParams(location.search),room=params.get("room"),token=params.get("t"),lang=params.get("lang");
   if(lang&&translations[lang]){language=lang;applyLanguage()}
+  renderMyDuels();
   if(room&&token&&/^[a-f0-9]{24}$/.test(room))startOnline(room,token);
 })();
 </script>
