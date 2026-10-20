@@ -83,7 +83,7 @@ async function handleInvite(request, env, corsHeaders) {
   const quota = await env.QUOTA.getByName("global").take(ip, friendEmail, {
     day: Number(env.INVITES_PER_DAY), ipHour: Number(env.INVITES_PER_IP_HOUR), toDay: Number(env.INVITES_PER_RECIPIENT_DAY),
   });
-  if (!quota.ok) return json({ error: "rate_limited" }, 429, corsHeaders);
+  if (!quota.ok) return json({ error: "rate_limited", reason: quota.reason }, 429, corsHeaders);
 
   const roomId = randomId(12);
   const hostToken = randomId(16);
@@ -153,14 +153,15 @@ export class InviteQuota extends DurableObject {
     const hour = new Date(now).toISOString().slice(0, 13);
     const sql = this.ctx.storage.sql;
     sql.exec("DELETE FROM hits WHERE exp < ?", now);
+    // The "v2:" prefix started fresh counters after the per-IP limit was raised.
     const checks = [
-      [`day:${day}`, limits.day, 86400e3],
-      [`ip:${ip}:${hour}`, limits.ipHour, 3600e3],
-      [`to:${recipient}:${day}`, limits.toDay, 86400e3],
+      [`v2:day:${day}`, limits.day, 86400e3, "day"],
+      [`v2:ip:${ip}:${hour}`, limits.ipHour, 3600e3, "ip"],
+      [`v2:to:${recipient}:${day}`, limits.toDay, 86400e3, "to"],
     ];
-    for (const [k, max] of checks) {
+    for (const [k, max, , reason] of checks) {
       const row = sql.exec("SELECT n FROM hits WHERE k = ?", k).toArray()[0];
-      if (row && row.n >= max) return { ok: false };
+      if (row && row.n >= max) return { ok: false, reason };
     }
     for (const [k, , ttl] of checks) {
       sql.exec("INSERT INTO hits (k, n, exp) VALUES (?, 1, ?) ON CONFLICT(k) DO UPDATE SET n = n + 1", k, now + ttl);

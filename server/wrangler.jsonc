@@ -11,7 +11,7 @@
     "MAIL_FROM": "alex@nesmachny.net",
     // Abuse guards: the Email Sending quota is shared with other projects on this account.
     "INVITES_PER_DAY": "30",
-    "INVITES_PER_IP_HOUR": "5",
+    "INVITES_PER_IP_HOUR": "10",
     "INVITES_PER_RECIPIENT_DAY": "3"
   },
   "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["alex@nesmachny.net"] }],
